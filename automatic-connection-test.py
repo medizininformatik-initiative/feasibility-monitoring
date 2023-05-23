@@ -20,7 +20,7 @@ parser.add_argument('--confluence_api_base_url', help='', nargs="?",
                     default='https://myconfluence-rest-api-url')
 parser.add_argument('--confluence_page_id', help='', nargs="?",
                     default='')
-parser.add_argument('--send_results_confluence', help='', nargs="?",  action='store_true',
+parser.add_argument('--send_results_confluence', help='', action='store_true',
                     default=False)
 parser.add_argument('--conf_user', help='username of confluence account', nargs="?", default='username')
 parser.add_argument('--conf_pw', help='password of confluence account', nargs="?", default='password')
