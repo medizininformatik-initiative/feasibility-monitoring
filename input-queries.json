@@ -141,6 +141,44 @@
                 "value": 0,
                 "comparator": "gt"
               }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "20509-6",
+                  "system": "http://loinc.org",
+                  "display": "Hemoglobin [Mass/volume] in Blood by calculation"
+                }
+              ],
+              "valueFilter": {
+                "selectedConcepts": [],
+                "type": "quantity-comparator",
+                "unit": {
+                  "code": "g/dL",
+                  "display": "g/dL"
+                },
+                "value": 0,
+                "comparator": "gt"
+              }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "30352-9",
+                  "system": "http://loinc.org",
+                  "display": "Totales Hämoglobin kapillär"
+                }
+              ],
+              "valueFilter": {
+                "selectedConcepts": [],
+                "type": "quantity-comparator",
+                "unit": {
+                  "code": "g/dL",
+                  "display": "g/dL"
+                },
+                "value": 0,
+                "comparator": "gt"
+              }
             }
           ]
         ]
