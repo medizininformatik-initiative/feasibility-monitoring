@@ -92,7 +92,7 @@ def connect_to_keycloak():
 
     print(f'Getting access token from {keycloak_token_url}')
     resp = requests.post(keycloak_token_url,
-                         data=backend_user_login, verify=False)
+                         data=backend_user_login)
     print(f'Token Status code: {resp.status_code}')
     access_token = resp.json()['access_token']
     return access_token
@@ -108,7 +108,7 @@ def send_test_query_and_get_id(access_token, sq):
     run_query_path = "/query"
     print(f'Running query on backend: {backend_base_url}{run_query_path}')
     resp = requests.post(
-        f'{backend_base_url}{run_query_path}', headers=header, json=sq, verify=False)
+        f'{backend_base_url}{run_query_path}', headers=header, json=sq)
 
     result_location = resp.headers['Location']
     query_id = result_location.rsplit('/', 1)[-1]
@@ -123,7 +123,7 @@ def get_results(query_id, access_token):
         'Content-Type': 'application/json'
     }
     resp = requests.get(
-        f'{backend_base_url}{run_query_path}/{query_id}/detailed-result', headers=header, verify=False)
+        f'{backend_base_url}{run_query_path}/{query_id}/detailed-result', headers=header)
     return resp.json()
 
 
@@ -323,7 +323,7 @@ def send_result_to_confluence_feas(report_table):
     }
 
     res = requests.get(f'{confluence_api_base_url}/content/{confluence_page_id_feas}',
-                       headers=header, verify=False)
+                       headers=header)
 
     version_number = res.json()['version']['number']
     content_update = {
@@ -358,7 +358,7 @@ def send_result_to_confluence_ping(report_table):
     }
 
     res = requests.get(f'{confluence_api_base_url}/content/{confluence_page_id_ping}',
-                       headers=header, verify=False)
+                       headers=header)
 
     version_number = res.json()['version']['number']
     content_update = {
@@ -419,12 +419,12 @@ def execute_ping_task():
                 '''
 
     res = requests.post(f'{dsf_base_url}/Task', headers=header,
-                        cert=(dsf_cert_path, dsf_key_path), data=ping_task, verify=False)
+                        cert=(dsf_cert_path, dsf_key_path), data=ping_task)
     ping_task_id = res.json()['id']
     time.sleep(int(wait_result_secs_ping))
 
     res = requests.get(f'{dsf_base_url}/Task/{ping_task_id}?_format=json',
-                       headers=header, cert=(dsf_cert_path, dsf_key_path), verify=False)
+                       headers=header, cert=(dsf_cert_path, dsf_key_path))
     ping_task_result = res.json()
     ping_results = {}
 
