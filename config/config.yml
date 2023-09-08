@@ -1,0 +1,57 @@
+feas-page-title: "Automatische Pruefung Anbindung Testumgebung Feasibility"
+feas-page-content-html: |
+  <div>
+  <strong>Ausgewählte automatische Abfragen des FDPG Machbarkeitsportal</strong><br></br>
+  Für Öffnung vorausgesetzt:<br></br>
+  <strong>Patient</strong>: code=263495000 (female|male) <br></br>
+  <strong>Condition</strong>: code=E10-E14 (Diabetes mellitus)<br></br>
+  <strong>Labor</strong>: code=718-7|17856-6|4548-4|4549-2 (Hemoglobin)<br></br>
+  <strong>Prozedur</strong>: code=3-20|8-19 (CT,nativ| Verbände Gewebe)<br></br>
+  <strong>Konsent</strong>: code=central-consent (MDAT wissenschaftlich nutzen)<br></br>
+  <br></br>
+  <strong>Für Öffnung nicht vorausgesetzt:</strong><br></br>
+  Medikation (admin): code=A10 (Antidiabetika)<br></br>
+  Specimen: code=119297000|119361006|119376003|441652008|441479001|420135007<br></br>
+  (Blood|Plasma|Tissue|fixed Tissue|fresh Tissue|Whole blood)<br></br>
+  </div>
+
+  <div>
+  <br></br><br></br>
+  Standorte die nicht angeschlossen sind finden die Anleitungen zum Anschluss ans Feasibility-Portal
+  mit Aktin hier:<br></br>
+  https://github.com/medizininformatik-initiative/feasibility-deploy/tree/v2.0.0<br></br>
+  Für das Triangle-Update der Readme hier folgen: https://github.com/medizininformatik-initiative/feasibility-deploy/tree/v2.0.0/feasibility-triangle#updating-the-feasibility-triangle<br></br>
+  Die neue Ontologie muss hier runtergeladen werden: https://confluence.imi.med.fau.de/display/MIIC/Ontologie<br></br>
+  <br></br>
+  mit DSF hier:<br></br>
+  https://github.com/medizininformatik-initiative/feasibility-deploy/wiki/DSF-Middleware-Setup<br></br>
+  <br></br>
+  Informationen zum Feasibility Portal, DIZ-Dashboard und zur Datenausleitung mit DSF finden Sie hier:<br></br>
+  https://xdash.forschen-fuer-gesundheit.de/?readme<br></br>
+  <br></br>
+  Kontakt: info@forschen-fuer-gesundheit.de <br></br>
+  </div>
+  <br></br>
+  <div>
+  <strong>Legende</strong>:<br></br>
+  <strong>„YES“</strong>: mehr als 20 Datenpunkte<br></br>
+  <strong>„no“</strong>: weniger als 20 Datenpunkte<br></br>
+  <strong>„.“</strong>: keine Antwort<br></br>
+  </div>
+hist-page-title: "test title"
+hist-page-content-html: |
+  <div>
+  test body
+  </div>
+ping-page-title: "Ergebnis Ping DSF Testumgebung FDPG"
+ping-page-content-html: |
+  <div>
+  <strong>DSF ping test Ergebnisse</strong><br></br>
+  </div>
+dsf-site-ids: |
+  [
+    "ukaachen.de", "uk-augsburg.de", "charite.de", "ukbonn.de", "ukdd.de", "uniklinik-duesseldorf.de", "www.uk-erlangen.de", "uk-essen.de", "kgu.de",
+    "uniklinik-freiburg.de", "uni-giessen.de", "umg.eu", "www.medizin.uni-greifswald.de", "uk-halle.de", "uke.de", "mh-hannover.de", "ukhd.de", 
+    "uniklinikum-jena.de", "uk-koeln.de", "uniklinikum-leipzig.de", "www.med.uni-magdeburg.de", "unimedizin-mainz.de", "umm.de", "uni-marburg.de", 
+    "lmu-klinikum.de", "mri.tum.de", "ukm.de", "ukr.de", "med.uni-rostock.de", "uks.eu", "uksh.de","medizin.uni-tuebingen.de", "uniklinik-ulm.de", "ukw.de"
+  ]
