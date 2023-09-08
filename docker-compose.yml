@@ -11,6 +11,14 @@ services:
             - CONFLUENCE_PAGE_ID=${CONFLUENCE_PAGE_ID:-""}
             - CONF_USER=${CONF_USER:-"username"}
             - CONF_PW=${CONF_PW:-"password"}
-            - WAIT_RESULT_SECS=${WAIT_RESULT_SECS:-60}
+            - WAIT_RESULT_SECS_FEAS=${WAIT_RESULT_SECS_FEAS:-60}
+            - WAIT_RESULT_SECS_PING=${WAIT_RESULT_SECS_PING:-600}
+            - SEND_TO_CONFLUENCE=${SEND_TO_CONFLUENCE:-"false"}
+            - DSF_BASE_URL=${DSF_BASE_URL:-""}
+            - EXECUTE_FEAS_TEST=${EXECUTE_FEAS_TEST:-"false"}
+            - CONFLUENCE_PAGE_ID_FEAS=$CONFLUENCE_PAGE_ID_FEAS
+            - EXECUTE_DSF_PING_TEST=${EXECUTE_DSF_PING_TEST:-"false"}
+            - CONFLUENCE_PAGE_ID_PING=$CONFLUENCE_PAGE_ID_PING
         volumes:
-            - .:/opt/reportclient
+            - ${DSF_CERT_PATH:-./cert/dsf-cert.cer}:/opt/reportclient/certs/dsf-cert.cer
+            - ${DSF_KEY_PATH:-./cert/dsf-key.key}:/opt/reportclient/certs/dsf-key.key
