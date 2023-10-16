@@ -150,7 +150,7 @@ def convert_results(results):
         # elif site_name in result_list:
         #     result_list[site_name] = n_patients
 
-    return result_list
+    return dict(sorted(result_list.items()))
 
 
 def save_results_to_disk(query_report):
@@ -264,14 +264,13 @@ def convert_report_to_simple_table(input_report):
         "header": ['Site']
     }
 
-    site_list = list(sites)
+    site_list = sorted(list(sites))
 
     for query in input_report['queries']:
         header_entry = query['query-name']
         table['header'].append(header_entry)
 
     for site in site_list:
-        print(site)
         table[site] = [site]
 
         for query in input_report['queries']:
@@ -343,7 +342,7 @@ def send_result_to_confluence_ping(report_table):
 
     page_info = '''
                 <div>
-                <strong>Ausgewählte automatische Abfragen des FDPG Machbarkeitsportal zur Prüfung Anbindung Testumgebung</strong><br></br>
+                <strong>DSF ping test Ergebnisse</strong><br></br>
                 </div>
     '''
 
@@ -362,7 +361,7 @@ def send_result_to_confluence_ping(report_table):
 
     version_number = res.json()['version']['number']
     content_update = {
-        'title': 'Automatische Pruefung Anbindung Testumgebung Feasibility',
+        'title': 'Ergebnis Ping DSF Testumgebung FDPG',
         'type': 'page',
         'body': {'storage': {'value': page_info,
                              'representation': 'storage'
@@ -370,6 +369,7 @@ def send_result_to_confluence_ping(report_table):
                  },
         'version': {'number': version_number + 1}
     }
+
     res = requests.put(f'{confluence_api_base_url}/content/{confluence_page_id_ping}',
                        headers=header, json=content_update)
 
@@ -421,6 +421,7 @@ def execute_ping_task():
     res = requests.post(f'{dsf_base_url}/Task', headers=header,
                         cert=(dsf_cert_path, dsf_key_path), data=ping_task)
     ping_task_id = res.json()['id']
+    print(ping_task_id)
     time.sleep(int(wait_result_secs_ping))
 
     res = requests.get(f'{dsf_base_url}/Task/{ping_task_id}?_format=json',
@@ -433,7 +434,7 @@ def execute_ping_task():
         ping_result = result['valueCoding']['code']
         ping_results[site_ident] = ping_result
 
-    print(ping_results)
+    ping_results = dict(sorted(ping_results.items()))
     report_table = convert_report_to_simple_table_ping(ping_results)
     print(report_table)
 
