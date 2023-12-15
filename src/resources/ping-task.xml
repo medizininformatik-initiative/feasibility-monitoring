@@ -1,0 +1,35 @@
+<Task
+    xmlns="http://hl7.org/fhir">
+    <meta>
+        <profile value="http://dsf.dev/fhir/StructureDefinition/task-start-ping|1.0"></profile>
+    </meta>
+    <instantiatesCanonical value="http://dsf.dev/bpe/Process/ping|1.0"></instantiatesCanonical>
+    <status value="requested"></status>
+    <intent value="order"></intent>
+    <authoredOn value="2023-09-05T09:57:14.609Z"></authoredOn>
+    <requester>
+        <type value="Organization"></type>
+        <identifier>
+            <system value="http://dsf.dev/sid/organization-identifier"></system>
+            <value value="forschen-fuer-gesundheit.de"></value>
+        </identifier>
+    </requester>
+    <restriction>
+        <recipient>
+            <type value="Organization"></type>
+            <identifier>
+                <system value="http://dsf.dev/sid/organization-identifier"></system>
+                <value value="forschen-fuer-gesundheit.de"></value>
+            </identifier>
+        </recipient>
+    </restriction>
+    <input>
+        <type>
+            <coding>
+                <system value="http://dsf.dev/fhir/CodeSystem/bpmn-message"></system>
+                <code value="message-name"></code>
+            </coding>
+        </type>
+        <valueString value="startPing"></valueString>
+    </input>
+</Task>
