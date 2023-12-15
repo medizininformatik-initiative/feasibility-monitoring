@@ -1,5 +1,7 @@
 .env
-test.py
 feasibility-results.json
 dev-call.sh
 reports/*.json
+certs/
+temp/
+__pycache__/
