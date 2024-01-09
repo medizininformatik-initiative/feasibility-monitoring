@@ -94,16 +94,6 @@
                 "system": "fdpg.mii.cds",
                 "version": "1.0.0",
                 "display": "Laboruntersuchung"
-              },
-              "valueFilter": {
-                "selectedConcepts": [],
-                "type": "quantity-comparator",
-                "unit": {
-                  "code": "g/dL",
-                  "display": "g/dL"
-                },
-                "value": 0,
-                "comparator": "gt"
               }
             },
             {
@@ -119,16 +109,6 @@
                 "system": "fdpg.mii.cds",
                 "version": "1.0.0",
                 "display": "Laboruntersuchung"
-              },
-              "valueFilter": {
-                "selectedConcepts": [],
-                "type": "quantity-comparator",
-                "unit": {
-                  "code": "%",
-                  "display": "%"
-                },
-                "value": 0,
-                "comparator": "gt"
               }
             },
             {
@@ -144,16 +124,6 @@
                 "system": "fdpg.mii.cds",
                 "version": "1.0.0",
                 "display": "Laboruntersuchung"
-              },
-              "valueFilter": {
-                "selectedConcepts": [],
-                "type": "quantity-comparator",
-                "unit": {
-                  "code": "%",
-                  "display": "%"
-                },
-                "value": 0,
-                "comparator": "gt"
               }
             },
             {
@@ -169,16 +139,6 @@
                 "system": "fdpg.mii.cds",
                 "version": "1.0.0",
                 "display": "Laboruntersuchung"
-              },
-              "valueFilter": {
-                "selectedConcepts": [],
-                "type": "quantity-comparator",
-                "unit": {
-                  "code": "%",
-                  "display": "%"
-                },
-                "value": 0,
-                "comparator": "gt"
               }
             }
           ]

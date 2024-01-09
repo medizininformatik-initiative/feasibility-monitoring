@@ -272,16 +272,6 @@
                                 "system": "fdpg.mii.cds",
                                 "version": "1.0.0",
                                 "display": "Laboruntersuchung"
-                            },
-                            "valueFilter": {
-                                "selectedConcepts": [],
-                                "type": "quantity-comparator",
-                                "unit": {
-                                    "code": "g/dL",
-                                    "display": "g/dL"
-                                },
-                                "value": 0,
-                                "comparator": "gt"
                             }
                         },
                         {
@@ -297,16 +287,6 @@
                                 "system": "fdpg.mii.cds",
                                 "version": "1.0.0",
                                 "display": "Laboruntersuchung"
-                            },
-                            "valueFilter": {
-                                "selectedConcepts": [],
-                                "type": "quantity-comparator",
-                                "unit": {
-                                    "code": "%",
-                                    "display": "%"
-                                },
-                                "value": 0,
-                                "comparator": "gt"
                             }
                         },
                         {
@@ -322,16 +302,6 @@
                                 "system": "fdpg.mii.cds",
                                 "version": "1.0.0",
                                 "display": "Laboruntersuchung"
-                            },
-                            "valueFilter": {
-                                "selectedConcepts": [],
-                                "type": "quantity-comparator",
-                                "unit": {
-                                    "code": "%",
-                                    "display": "%"
-                                },
-                                "value": 0,
-                                "comparator": "gt"
                             }
                         },
                         {
@@ -347,16 +317,6 @@
                                 "system": "fdpg.mii.cds",
                                 "version": "1.0.0",
                                 "display": "Laboruntersuchung"
-                            },
-                            "valueFilter": {
-                                "selectedConcepts": [],
-                                "type": "quantity-comparator",
-                                "unit": {
-                                    "code": "%",
-                                    "display": "%"
-                                },
-                                "value": 0,
-                                "comparator": "gt"
                             }
                         }
                     ]
@@ -368,10 +328,10 @@
                     {
                         "name": "union",
                         "operands": [
-                            "[base]/Observation?code=http://loinc.org|718-7&value-quantity=gt0|http://unitsofmeasure.org|g/dL",
-                            "[base]/Observation?code=http://loinc.org|17856-6&value-quantity=gt0|http://unitsofmeasure.org|%",
-                            "[base]/Observation?code=http://loinc.org|4548-4&value-quantity=gt0|http://unitsofmeasure.org|%",
-                            "[base]/Observation?code=http://loinc.org|4549-2&value-quantity=gt0|http://unitsofmeasure.org|%"
+                            "[base]/Observation?code=http://loinc.org|718-7",
+                            "[base]/Observation?code=http://loinc.org|17856-6",
+                            "[base]/Observation?code=http://loinc.org|4548-4",
+                            "[base]/Observation?code=http://loinc.org|4549-2"
                         ]
                     }
                 ]
