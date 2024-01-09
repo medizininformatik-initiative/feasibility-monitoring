@@ -1,0 +1,943 @@
+{
+    "queries": [
+        {
+            "query-name": "patient-gender",
+            "module": "Patient",
+            "optional": false,
+            "sq": {
+                "version": "http://to_be_decided.com/draft-1/schema#",
+                "display": "",
+                "inclusionCriteria": [
+                    [
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "263495000",
+                                    "system": "http://snomed.info/sct",
+                                    "display": "Geschlecht"
+                                }
+                            ],
+                            "context": {
+                                "code": "Patient",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Patient"
+                            },
+                            "valueFilter": {
+                                "selectedConcepts": [
+                                    {
+                                        "code": "female",
+                                        "display": "Female",
+                                        "system": "http://hl7.org/fhir/administrative-gender"
+                                    },
+                                    {
+                                        "code": "male",
+                                        "display": "Male",
+                                        "system": "http://hl7.org/fhir/administrative-gender"
+                                    }
+                                ],
+                                "type": "concept"
+                            }
+                        }
+                    ]
+                ]
+            },
+            "sq-translated": {
+                "name": "intersection",
+                "operands": [
+                    {
+                        "name": "union",
+                        "operands": [
+                            "[base]/Patient?gender=female",
+                            "[base]/Patient?gender=male"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "query-name": "diabetes-any",
+            "module": "Condition",
+            "optional": false,
+            "sq": {
+                "version": "http://to_be_decided.com/draft-1/schema#",
+                "display": "",
+                "inclusionCriteria": [
+                    [
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "E10-E14",
+                                    "system": "http://fhir.de/CodeSystem/bfarm/icd-10-gm",
+                                    "version": "2023",
+                                    "display": "Diabetes mellitus"
+                                }
+                            ],
+                            "context": {
+                                "code": "Diagnose",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Diagnose"
+                            }
+                        }
+                    ]
+                ]
+            },
+            "sq-translated": {
+                "name": "intersection",
+                "operands": [
+                    {
+                        "name": "union",
+                        "operands": [
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10-E14",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.3",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.31",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.30",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.1",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.11",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.0",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.01",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.7",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.75",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.74",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.73",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.72",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.4",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.41",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.40",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.8",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.81",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.80",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.2",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.21",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.20",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.5",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.51",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.50",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.6",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.61",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.60",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.9",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.91",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E12.90",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.3",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.31",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.30",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.1",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.11",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.0",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.01",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.7",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.75",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.74",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.73",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.72",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.4",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.41",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.40",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.8",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.81",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.80",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.2",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.21",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.20",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.5",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.51",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.50",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.6",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.61",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.60",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.9",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.91",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E10.90",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.3",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.31",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.30",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.1",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.11",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.0",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.01",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.7",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.75",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.74",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.73",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.72",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.4",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.41",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.40",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.8",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.81",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.80",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.2",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.21",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.20",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.5",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.51",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.50",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.6",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.61",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.60",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.9",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.91",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E11.90",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.3",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.31",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.30",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.1",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.11",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.0",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.01",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.7",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.75",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.74",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.73",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.72",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.4",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.41",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.40",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.8",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.81",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.80",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.2",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.21",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.20",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.5",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.51",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.50",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.6",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.61",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.60",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.9",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.91",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E14.90",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.3",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.31",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.30",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.1",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.11",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.0",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.01",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.7",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.75",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.74",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.73",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.72",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.4",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.41",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.40",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.8",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.81",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.80",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.2",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.21",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.20",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.5",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.51",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.50",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.6",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.61",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.60",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.9",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.91",
+                            "[base]/Condition?code=http://fhir.de/CodeSystem/bfarm/icd-10-gm|E13.90"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "query-name": "hemoglobin-718-7",
+            "module": "Laboratory",
+            "optional": false,
+            "sq": {
+                "version": "http://to_be_decided.com/draft-1/schema#",
+                "display": "",
+                "inclusionCriteria": [
+                    [
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "718-7",
+                                    "system": "http://loinc.org",
+                                    "display": "H\u00e4moglobin"
+                                }
+                            ],
+                            "context": {
+                                "code": "Laboruntersuchung",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Laboruntersuchung"
+                            },
+                            "valueFilter": {
+                                "selectedConcepts": [],
+                                "type": "quantity-comparator",
+                                "unit": {
+                                    "code": "g/dL",
+                                    "display": "g/dL"
+                                },
+                                "value": 0,
+                                "comparator": "gt"
+                            }
+                        },
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "17856-6",
+                                    "system": "http://loinc.org",
+                                    "display": "H\u00e4moglobin A1c"
+                                }
+                            ],
+                            "context": {
+                                "code": "Laboruntersuchung",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Laboruntersuchung"
+                            },
+                            "valueFilter": {
+                                "selectedConcepts": [],
+                                "type": "quantity-comparator",
+                                "unit": {
+                                    "code": "%",
+                                    "display": "%"
+                                },
+                                "value": 0,
+                                "comparator": "gt"
+                            }
+                        },
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "4548-4",
+                                    "system": "http://loinc.org",
+                                    "display": "H\u00e4moglobin A1c"
+                                }
+                            ],
+                            "context": {
+                                "code": "Laboruntersuchung",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Laboruntersuchung"
+                            },
+                            "valueFilter": {
+                                "selectedConcepts": [],
+                                "type": "quantity-comparator",
+                                "unit": {
+                                    "code": "%",
+                                    "display": "%"
+                                },
+                                "value": 0,
+                                "comparator": "gt"
+                            }
+                        },
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "4549-2",
+                                    "system": "http://loinc.org",
+                                    "display": "Hemoglobin A1c/Hemoglobin.total in Blood by Electrophoresis"
+                                }
+                            ],
+                            "context": {
+                                "code": "Laboruntersuchung",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Laboruntersuchung"
+                            },
+                            "valueFilter": {
+                                "selectedConcepts": [],
+                                "type": "quantity-comparator",
+                                "unit": {
+                                    "code": "%",
+                                    "display": "%"
+                                },
+                                "value": 0,
+                                "comparator": "gt"
+                            }
+                        }
+                    ]
+                ]
+            },
+            "sq-translated": {
+                "name": "intersection",
+                "operands": [
+                    {
+                        "name": "union",
+                        "operands": [
+                            "[base]/Observation?code=http://loinc.org|718-7&value-quantity=gt0|http://unitsofmeasure.org|g/dL",
+                            "[base]/Observation?code=http://loinc.org|17856-6&value-quantity=gt0|http://unitsofmeasure.org|%",
+                            "[base]/Observation?code=http://loinc.org|4548-4&value-quantity=gt0|http://unitsofmeasure.org|%",
+                            "[base]/Observation?code=http://loinc.org|4549-2&value-quantity=gt0|http://unitsofmeasure.org|%"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "query-name": "medication-administration-antidiab",
+            "module": "Medication",
+            "optional": true,
+            "sq": {
+                "version": "http://to_be_decided.com/draft-1/schema#",
+                "display": "",
+                "inclusionCriteria": [
+                    [
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "A10",
+                                    "system": "http://fhir.de/CodeSystem/bfarm/atc",
+                                    "version": "2022",
+                                    "display": "Antidiabetika"
+                                }
+                            ],
+                            "context": {
+                                "code": "Medikamentenverabreichung",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Verabreichung von Medikamenten"
+                            }
+                        }
+                    ]
+                ]
+            },
+            "sq-translated": {
+                "name": "intersection",
+                "operands": [
+                    {
+                        "name": "union",
+                        "operands": [
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10X",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10XA",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10XA01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10XH",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10XH20",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10XP",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10XP02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10XP01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10XP30",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10B",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BF",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BF01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BF02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BF03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BX",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BX06",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BX01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BX15",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BX08",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BX03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BX05",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BX02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BA",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BA03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BA02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BA01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH04",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH07",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH06",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH52",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH05",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH51",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH08",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BH02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BJ",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BJ04",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BJ07",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BJ05",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BJ01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BJ02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BJ03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BJ06",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD06",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD04",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD19",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD17",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD13",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD16",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD15",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD20",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD23",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD22",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD18",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD31",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD11",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD26",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD05",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD14",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD10",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD07",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD08",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD27",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD25",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD09",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD12",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD21",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BD24",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BK",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BK02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BK01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BK03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BK04",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BK05",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BK07",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BK06",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BC",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BC01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB31",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB06",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB04",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB09",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB12",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB07",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB08",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB11",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB10",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB05",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BB03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BG",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BG04",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BG03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BG02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10BG01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10A",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AF",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AF01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AD",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AD01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AD02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AD03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AD05",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AD06",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AD04",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AD30",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AC",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AC01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AC02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AC03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AC04",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AC30",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AE",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AE01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AE02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AE03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AE06",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AE56",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AE05",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AE04",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AE54",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AE30",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AB",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AB01",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AB02",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AB03",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AB05",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AB06",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AB04",
+                            "[base]/MedicationAdministration?medication.code=http://fhir.de/CodeSystem/bfarm/atc|A10AB30"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "query-name": "procedure-endocronological-function",
+            "module": "Procedure",
+            "optional": false,
+            "sq": {
+                "version": "http://to_be_decided.com/draft-1/schema#",
+                "display": "",
+                "inclusionCriteria": [
+                    [
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "3-20",
+                                    "system": "http://fhir.de/CodeSystem/bfarm/ops",
+                                    "version": "2023",
+                                    "display": "Computertomographie [CT], nativ"
+                                }
+                            ],
+                            "context": {
+                                "code": "Procedure",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Prozedur"
+                            }
+                        },
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "8-19",
+                                    "system": "http://fhir.de/CodeSystem/bfarm/ops",
+                                    "version": "2023",
+                                    "display": "Verb\u00e4nde und Entfernung von erkranktem Gewebe an Haut und Unterhaut"
+                                }
+                            ],
+                            "context": {
+                                "code": "Procedure",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Prozedur"
+                            }
+                        }
+                    ]
+                ]
+            },
+            "sq-translated": {
+                "name": "intersection",
+                "operands": [
+                    {
+                        "name": "union",
+                        "operands": [
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-20",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-20x",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-208",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-207",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-206",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-201",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-204",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-205",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-200",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-202",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|3-203",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-19",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.1",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.1b",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.1a",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.1g",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.1d",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.15",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.19",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.1c",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.10",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.17",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.1e",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.16",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.1x",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.14",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.18",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.1f",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.3",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.3b",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.3a",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.3g",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.3d",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.35",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.39",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.3c",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.30",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.37",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.3e",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.36",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.3x",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.34",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.38",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.3f",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.2",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.2b",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.2a",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.2g",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.2d",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.25",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.29",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.2c",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.20",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.27",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.2e",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.26",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.2x",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.24",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.28",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.2f",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.0",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.0b",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.0a",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.0g",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.0d",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.05",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.09",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.0c",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.00",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.07",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.0e",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.06",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.0x",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.04",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.08",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.0f",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.y",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.x",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.xb",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.xa",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.xg",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.xd",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.x5",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.x9",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.xc",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.x0",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.x7",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.xe",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.x6",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.xx",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.x4",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.x8",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-192.xf",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.2",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.22",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.21",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.20",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.23",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.4",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.42",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.41",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.40",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.43",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.3",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.32",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.31",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.30",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-190.33",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.1",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.11",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.10",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.2",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.21",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.20",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.0",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.01",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.00",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.5",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.y",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.7",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.72",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.73",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.74",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.75",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.76",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.77",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.78",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.79",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.71",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.70",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.6",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.x",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.4",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.41",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.40",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.3",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.31",
+                            "[base]/Procedure?code=http://fhir.de/CodeSystem/bfarm/ops|8-191.30"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "query-name": "specimen-test",
+            "module": "Specimen",
+            "optional": true,
+            "sq": {
+                "version": "http://to_be_decided.com/draft-1/schema#",
+                "display": "",
+                "inclusionCriteria": [
+                    [
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "119297000",
+                                    "system": "http://snomed.info/sct",
+                                    "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                                    "display": "Blood specimen"
+                                }
+                            ],
+                            "context": {
+                                "code": "Specimen",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Bioprobe"
+                            }
+                        },
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "119361006",
+                                    "system": "http://snomed.info/sct",
+                                    "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                                    "display": "Plasma specimen"
+                                }
+                            ],
+                            "context": {
+                                "code": "Specimen",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Bioprobe"
+                            }
+                        },
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "119376003",
+                                    "system": "http://snomed.info/sct",
+                                    "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                                    "display": "Tissue specimen"
+                                }
+                            ],
+                            "context": {
+                                "code": "Specimen",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Bioprobe"
+                            }
+                        },
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "441652008",
+                                    "system": "http://snomed.info/sct",
+                                    "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                                    "display": "Formalin-fixed paraffin-embedded tissue specimen"
+                                }
+                            ],
+                            "context": {
+                                "code": "Specimen",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Bioprobe"
+                            }
+                        },
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "441479001",
+                                    "system": "http://snomed.info/sct",
+                                    "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                                    "display": "Fresh tissue specimen"
+                                }
+                            ],
+                            "context": {
+                                "code": "Specimen",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Bioprobe"
+                            }
+                        },
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "420135007",
+                                    "system": "http://snomed.info/sct",
+                                    "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                                    "display": "Whole blood"
+                                }
+                            ],
+                            "context": {
+                                "code": "Specimen",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Bioprobe"
+                            }
+                        }
+                    ]
+                ]
+            },
+            "sq-translated": {
+                "name": "intersection",
+                "operands": [
+                    {
+                        "name": "union",
+                        "operands": [
+                            "[base]/Specimen?type=http://snomed.info/sct|119297000",
+                            "[base]/Specimen?type=http://snomed.info/sct|446272009",
+                            "[base]/Specimen?type=http://snomed.info/sct|441510007",
+                            "[base]/Specimen?type=http://snomed.info/sct|445295009",
+                            "[base]/Specimen?type=http://snomed.info/sct|57921000052103",
+                            "[base]/Specimen?type=http://snomed.info/sct|122556008",
+                            "[base]/Specimen?type=http://snomed.info/sct|122551003",
+                            "[base]/Specimen?type=http://snomed.info/sct|119361006",
+                            "[base]/Specimen?type=http://snomed.info/sct|708048008",
+                            "[base]/Specimen?type=http://snomed.info/sct|708049000",
+                            "[base]/Specimen?type=http://snomed.info/sct|119362004",
+                            "[base]/Specimen?type=http://snomed.info/sct|119364003",
+                            "[base]/Specimen?type=http://snomed.info/sct|258580003",
+                            "[base]/Specimen?type=http://snomed.info/sct|119361006",
+                            "[base]/Specimen?type=http://snomed.info/sct|708048008",
+                            "[base]/Specimen?type=http://snomed.info/sct|708049000",
+                            "[base]/Specimen?type=http://snomed.info/sct|119362004",
+                            "[base]/Specimen?type=http://snomed.info/sct|119376003",
+                            "[base]/Specimen?type=http://snomed.info/sct|258417006",
+                            "[base]/Specimen?type=http://snomed.info/sct|441652008",
+                            "[base]/Specimen?type=http://snomed.info/sct|441479001",
+                            "[base]/Specimen?type=http://snomed.info/sct|16214131000119104",
+                            "[base]/Specimen?type=http://snomed.info/sct|309186001",
+                            "[base]/Specimen?type=http://snomed.info/sct|309072003",
+                            "[base]/Specimen?type=http://snomed.info/sct|119325001",
+                            "[base]/Specimen?type=http://snomed.info/sct|258435002",
+                            "[base]/Specimen?type=http://snomed.info/sct|441652008",
+                            "[base]/Specimen?type=http://snomed.info/sct|441479001",
+                            "[base]/Specimen?type=http://snomed.info/sct|420135007"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "query-name": "central-consent-eudsgvoniveau",
+            "module": "Consent",
+            "optional": false,
+            "sq": {
+                "version": "http://to_be_decided.com/draft-1/schema#",
+                "display": "",
+                "inclusionCriteria": [
+                    [
+                        {
+                            "termCodes": [
+                                {
+                                    "code": "2.16.840.1.113883.3.1937.777.24.5.3.8",
+                                    "system": "urn:oid:2.16.840.1.113883.3.1937.777.24.5.3",
+                                    "version": "1.0.2",
+                                    "display": "MDAT wissenschaftlich nutzen EU DSGVO NIVEAU"
+                                }
+                            ],
+                            "context": {
+                                "code": "Einwilligung",
+                                "system": "fdpg.mii.cds",
+                                "version": "1.0.0",
+                                "display": "Einwilligung"
+                            }
+                        }
+                    ]
+                ]
+            },
+            "sq-translated": {
+                "name": "intersection",
+                "operands": [
+                    {
+                        "name": "union",
+                        "operands": [
+                            "[base]/Consent?mii-provision-provision-code=urn:oid:2.16.840.1.113883.3.1937.777.24.5.3|2.16.840.1.113883.3.1937.777.24.5.3.8"
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
