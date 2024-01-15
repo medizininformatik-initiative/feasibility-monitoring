@@ -1,6 +1,8 @@
 import argparse
 import execute_ping_test
 import execute_feasibility_test
+import logging
+import sys
 
 
 def str_to_bool(s):
@@ -8,6 +10,9 @@ def str_to_bool(s):
 
 
 if __name__ == "__main__":
+    logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+    logging.info("Running Feasibility Monitoring")
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--backend_base_url', help='base url of the feasibility backend',
                         default="https://localhost/api/v2")
@@ -72,6 +77,7 @@ if __name__ == "__main__":
     b_execute_ping_test = args["execute_ping_test"]
 
     if b_execute_history_test:
+        logging.info("Starting history test")
         execute_feasibility_test.execute_history_query(backend_base_url,
                                                        backend_client_id,
                                                        client_secret,
@@ -83,6 +89,7 @@ if __name__ == "__main__":
                                                        b_send_results_confluence,
                                                        history_table_len)
     if b_execute_feas_test:
+        logging.info("Starting feasibility test")
         execute_feasibility_test.execute_feas_test_queries(backend_base_url,
                                                            backend_client_id,
                                                            client_secret,
@@ -94,6 +101,7 @@ if __name__ == "__main__":
                                                            b_send_results_confluence)
 
     if b_execute_ping_test:
+        logging.info("Starting ping test")
         execute_ping_test.execute_ping_task(dsf_base_url,
                                             wait_result_secs_ping,
                                             b_send_results_confluence,

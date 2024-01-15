@@ -68,3 +68,7 @@ docker-compose -f docker/docker-compose.yml up
 | HISTORY_TABLE_LEN             | 14                                    | The maximum amount of history repots displayed in the Confluence table.                          |
 | EXECUTE_DSF_PING_TEST         | false                                 | Boolean: Whether to execute the DSF ping test.                                                   |
 | CONFLUENCE_PAGE_ID_PING       |                                       | The Confluence page ID where the ping test result will be uploaded.                              |
+
+## Development
+
+There is a [shell script](src/execute-local.sh) that runs the monitoring without Docker. It uses the same environment variables as mentioned above.
