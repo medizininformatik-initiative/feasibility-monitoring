@@ -10,8 +10,6 @@ def str_to_bool(s):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-    logging.info("Running Feasibility Monitoring")
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--backend_base_url', help='base url of the feasibility backend',
@@ -51,9 +49,9 @@ if __name__ == "__main__":
     parser.add_argument('--execute_feas_test', help='', type=str_to_bool, default="false")
     parser.add_argument('--execute_history_test', help='', type=str_to_bool, default="false")
     parser.add_argument('--execute_ping_test', help='', type=str_to_bool, default="false")
+    parser.add_argument('--log_level', help='', default="INFO")
 
     args = vars(parser.parse_args())
-
     backend_base_url = args["backend_base_url"]
     backend_client_id = args["backend_client_id"]
     dsf_base_url = args["dsf_base_url"]
@@ -75,9 +73,13 @@ if __name__ == "__main__":
     b_execute_feas_test = args["execute_feas_test"]
     b_execute_history_test = args["execute_history_test"]
     b_execute_ping_test = args["execute_ping_test"]
+    log_level = args["log_level"]
+
+    logging.basicConfig(stream=sys.stdout, level=log_level)
+    logging.info(f'Running Feasibility Monitoring with log level {log_level}')
 
     if b_execute_history_test:
-        logging.info("Starting history test")
+        logging.info("Executing history test")
         execute_feasibility_test.execute_history_query(backend_base_url,
                                                        backend_client_id,
                                                        client_secret,
@@ -88,8 +90,10 @@ if __name__ == "__main__":
                                                        confluence_page_id_hist,
                                                        b_send_results_confluence,
                                                        history_table_len)
+        logging.info("Finished executing history test")
+
     if b_execute_feas_test:
-        logging.info("Starting feasibility test")
+        logging.info("Executing feasibility test")
         execute_feasibility_test.execute_feas_test_queries(backend_base_url,
                                                            backend_client_id,
                                                            client_secret,
@@ -99,9 +103,10 @@ if __name__ == "__main__":
                                                            confluence_page_id_feas,
                                                            wait_result_secs_feas,
                                                            b_send_results_confluence)
+        logging.info("Finished executing feasibility test")
 
     if b_execute_ping_test:
-        logging.info("Starting ping test")
+        logging.info("Executing ping test")
         execute_ping_test.execute_ping_task(dsf_base_url,
                                             wait_result_secs_ping,
                                             b_send_results_confluence,
@@ -110,3 +115,4 @@ if __name__ == "__main__":
                                             conf_user, conf_pw,
                                             dsf_cert_path,
                                             dsf_key_path)
+        logging.info("Finished executing ping test")

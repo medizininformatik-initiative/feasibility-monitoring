@@ -54,10 +54,10 @@ def connect_to_keycloak(backend_client_id, client_secret, keycloak_token_url):
 
                           }
 
-    logging.info(f'Getting access token from {keycloak_token_url}')
+    logging.debug(f'Getting access token from {keycloak_token_url}')
     resp = requests.post(keycloak_token_url,
                          data=backend_user_login)
-    logging.info(f'Token Status code: {resp.status_code}')
+    logging.debug(f'Token Status code: {resp.status_code}')
     access_token = resp.json()['access_token']
     return access_token
 
@@ -69,10 +69,11 @@ def send_test_query_and_get_id(access_token, sq, backend_base_url):
     }
 
     run_query_path = "/query"
-    logging.info(f'Running query on backend: {backend_base_url}{run_query_path}')
+    logging.debug(f'Running query on backend: {backend_base_url}{run_query_path}')
     resp = requests.post(
         f'{backend_base_url}{run_query_path}', headers=header, json=sq)
 
+    logging.debug(f'Response from backend run query: {resp.text}')
     result_location = resp.headers['Location']
     query_id = result_location.rsplit('/', 1)[-1]
     return query_id
@@ -257,6 +258,8 @@ def send_table_to_conf(table, conf_user, conf_pw, conf_api_base_url, conf_page_i
     res = requests.get(f'{conf_api_base_url}/content/{conf_page_id}',
                        headers=header)
 
+    logging.debug(f'Response sending result to confluence: {res.text}')
+
     version_number = res.json()['version']['number']
     content_update = {
         'title': page_title,
@@ -276,8 +279,7 @@ def send_query_and_get_results(query, backend_base_url, backend_client_id, clien
     logging.info(f'Sending query: {query}')
     query_id = send_test_query_and_get_id(access_token, query, backend_base_url)
     logging.info(f'Query ID: {query_id}')
-    logging.info(f'Sleep for {wait_result_secs_feas} seconds to wait for results')
-    sys.stdout.flush()
+    logging.debug(f'Sleep for {wait_result_secs_feas} seconds to wait for results')
     time.sleep(int(wait_result_secs_feas))
     access_token = connect_to_keycloak(backend_client_id, client_secret, keycloak_token_url)
     return get_results(query_id, access_token, backend_base_url)

@@ -28,7 +28,9 @@ def convert_report_to_simple_table_ping(input_report):
     }
 
     pTable = PrettyTable(table['header'])
-    pTable.add_row(["Total Responders", list(input_report.values()).count("pong-received")], divider=True)
+    pTable.add_row(["Total pong-recieved", list(input_report.values()).count("pong-received")], divider=True)
+    pTable.add_row(["Total pong-missing", list(input_report.values()).count("pong-missing")], divider=True)
+    pTable.add_row(["Total not-reachable", list(input_report.values()).count("not-reachable")], divider=True)
 
     for site_ident in input_report.keys():
         ping_result = input_report[site_ident]
@@ -84,13 +86,17 @@ def execute_ping_task(dsf_base_url, wait_result_secs_ping, b_send_results_conflu
 
     res = requests.post(f'{dsf_base_url}/Task', headers=header,
                         cert=(dsf_cert_path, dsf_key_path), data=ping_task)
+    
+    logging.debug(f'Response from DSF sending Ping: {res.text}')
     ping_task_id = res.json()['id']
 
-    logging.info(f'Sleep for {wait_result_secs_ping} seconds to wait for results')
+    logging.debug(f'Sleep for {wait_result_secs_ping} seconds to wait for results')
     time.sleep(int(wait_result_secs_ping))
 
     res = requests.get(f'{dsf_base_url}/Task/{ping_task_id}?_format=json',
                        headers=header, cert=(dsf_cert_path, dsf_key_path))
+
+    logging.debug(f'Response from DSF Ping Result: {res.text}')
     ping_task_result = res.json()
     ping_results = {}
 

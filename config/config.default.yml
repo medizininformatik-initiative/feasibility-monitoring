@@ -51,7 +51,7 @@ ping-page-content-html: |
   </div>
 dsf-site-ids: |
   [
-    "ukaachen.de", "uk-augsburg.de", "charite.de", "ukbonn.de", "ukdd.de", "uniklinik-duesseldorf.de", "uk-essen.de", "kgu.de",
+    "ukaachen.de", "uk-augsburg.de", "charite.de", "ukbonn.de", "ukdd.de", "uniklinik-duesseldorf.de", "www.uk-erlangen.de", "uk-essen.de", "kgu.de",
     "uniklinik-freiburg.de", "uni-giessen.de", "umg.eu", "www.medizin.uni-greifswald.de", "uk-halle.de", "uke.de", "mh-hannover.de", "ukhd.de", 
     "uniklinikum-jena.de", "uk-koeln.de", "uniklinikum-leipzig.de", "www.med.uni-magdeburg.de", "unimedizin-mainz.de", "umm.de", "uni-marburg.de", 
     "lmu-klinikum.de", "mri.tum.de", "ukm.de", "ukr.de", "med.uni-rostock.de", "uks.eu", "uksh.de","medizin.uni-tuebingen.de", "uniklinik-ulm.de", "ukw.de"
