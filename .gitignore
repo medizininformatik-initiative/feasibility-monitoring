@@ -5,3 +5,4 @@ reports/*.json
 certs/
 temp/
 __pycache__/
+config/config.yml
