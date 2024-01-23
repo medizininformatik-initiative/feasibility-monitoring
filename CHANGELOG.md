@@ -31,7 +31,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Site Url -> Site Identifier in table ([#9](https://github.com/medizininformatik-initiative/feasibility-monitoring/issues/9))
 - Adding new site breaks history table ([#13](https://github.com/medizininformatik-initiative/feasibility-monitoring/issues/13))
 
-
 ## [0.1.0] - 2024-01-23
 
 ### Added
