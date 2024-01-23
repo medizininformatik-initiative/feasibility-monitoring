@@ -353,6 +353,38 @@
                 "version": "1.0.0",
                 "display": "Bioprobe"
               }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "404798000",
+                  "system": "http://snomed.info/sct",
+                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                  "display": "Whole blood"
+                }
+              ],
+              "context": {
+                "code": "Specimen",
+                "system": "fdpg.mii.cds",
+                "version": "1.0.0",
+                "display": "Bioprobe"
+              }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "119342007",
+                  "system": "http://snomed.info/sct",
+                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                  "display": "Whole blood"
+                }
+              ],
+              "context": {
+                "code": "Specimen",
+                "system": "fdpg.mii.cds",
+                "version": "1.0.0",
+                "display": "Bioprobe"
+              }
             }
           ]
         ]
