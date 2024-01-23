@@ -43,7 +43,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Add shell script to execute the monitoring without docker for easier testing during development
     
 ### Changed
-- Update Readme to
+- Update Readme
 - Rename and move files for better file structure
 - Extend feasibility test to evaluate multilpe modules
 - Extend feasibility table to display additional summary fields
