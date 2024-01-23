@@ -94,16 +94,6 @@
                 "system": "fdpg.mii.cds",
                 "version": "1.0.0",
                 "display": "Laboruntersuchung"
-              },
-              "valueFilter": {
-                "selectedConcepts": [],
-                "type": "quantity-comparator",
-                "unit": {
-                  "code": "g/dL",
-                  "display": "g/dL"
-                },
-                "value": 0,
-                "comparator": "gt"
               }
             },
             {
@@ -119,16 +109,6 @@
                 "system": "fdpg.mii.cds",
                 "version": "1.0.0",
                 "display": "Laboruntersuchung"
-              },
-              "valueFilter": {
-                "selectedConcepts": [],
-                "type": "quantity-comparator",
-                "unit": {
-                  "code": "%",
-                  "display": "%"
-                },
-                "value": 0,
-                "comparator": "gt"
               }
             },
             {
@@ -144,16 +124,6 @@
                 "system": "fdpg.mii.cds",
                 "version": "1.0.0",
                 "display": "Laboruntersuchung"
-              },
-              "valueFilter": {
-                "selectedConcepts": [],
-                "type": "quantity-comparator",
-                "unit": {
-                  "code": "%",
-                  "display": "%"
-                },
-                "value": 0,
-                "comparator": "gt"
               }
             },
             {
@@ -169,16 +139,36 @@
                 "system": "fdpg.mii.cds",
                 "version": "1.0.0",
                 "display": "Laboruntersuchung"
-              },
-              "valueFilter": {
-                "selectedConcepts": [],
-                "type": "quantity-comparator",
-                "unit": {
-                  "code": "%",
-                  "display": "%"
-                },
-                "value": 0,
-                "comparator": "gt"
+              }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "20509-6",
+                  "system": "http://loinc.org",
+                  "display": "Hemoglobin [Mass/volume] in Blood by calculation"
+                }
+              ],
+              "context": {
+                "code": "Laboruntersuchung",
+                "system": "fdpg.mii.cds",
+                "version": "1.0.0",
+                "display": "Laboruntersuchung"
+              }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "30352-9",
+                  "system": "http://loinc.org",
+                  "display": "Totales Hämoglobin kapillär"
+                }
+              ],
+              "context": {
+                "code": "Laboruntersuchung",
+                "system": "fdpg.mii.cds",
+                "version": "1.0.0",
+                "display": "Laboruntersuchung"
               }
             }
           ]
@@ -352,6 +342,38 @@
               "termCodes": [
                 {
                   "code": "420135007",
+                  "system": "http://snomed.info/sct",
+                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                  "display": "Whole blood"
+                }
+              ],
+              "context": {
+                "code": "Specimen",
+                "system": "fdpg.mii.cds",
+                "version": "1.0.0",
+                "display": "Bioprobe"
+              }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "404798000",
+                  "system": "http://snomed.info/sct",
+                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                  "display": "Whole blood"
+                }
+              ],
+              "context": {
+                "code": "Specimen",
+                "system": "fdpg.mii.cds",
+                "version": "1.0.0",
+                "display": "Bioprobe"
+              }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "119342007",
                   "system": "http://snomed.info/sct",
                   "version": "http://snomed.info/sct/900000000000207008/version/20220930",
                   "display": "Whole blood"

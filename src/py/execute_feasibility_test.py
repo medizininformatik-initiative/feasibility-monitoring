@@ -1,6 +1,7 @@
 from prettytable import PrettyTable
 from datetime import datetime
 import requests
+import logging
 import base64
 import json
 import yaml
@@ -53,10 +54,10 @@ def connect_to_keycloak(backend_client_id, client_secret, keycloak_token_url):
 
                           }
 
-    print(f'Getting access token from {keycloak_token_url}')
+    logging.debug(f'Getting access token from {keycloak_token_url}')
     resp = requests.post(keycloak_token_url,
                          data=backend_user_login)
-    print(f'Token Status code: {resp.status_code}')
+    logging.debug(f'Token Status code: {resp.status_code}')
     access_token = resp.json()['access_token']
     return access_token
 
@@ -68,10 +69,11 @@ def send_test_query_and_get_id(access_token, sq, backend_base_url):
     }
 
     run_query_path = "/query"
-    print(f'Running query on backend: {backend_base_url}{run_query_path}')
+    logging.debug(f'Running query on backend: {backend_base_url}{run_query_path}')
     resp = requests.post(
         f'{backend_base_url}{run_query_path}', headers=header, json=sq)
 
+    logging.debug(f'Response from backend run query: {resp.text}')
     result_location = resp.headers['Location']
     query_id = result_location.rsplit('/', 1)[-1]
     return query_id
@@ -85,7 +87,7 @@ def convert_results(results):
 
     for result in results["resultLines"]:
         if result["siteName"] not in DSF_SITE_IDS:
-            continue
+            converted_results[result["siteName"]] = '.'
 
         n_patients = result['numberOfPatients']
 
@@ -107,21 +109,21 @@ def save_results_to_disk(query_report):
         json.dump(query_report, f)
 
 
-def append_percentage_fulfilled_column(site_module_yes_no_map, modules, optional_modules):
+def append_percentage_fulfilled_column(site_module_yes_no_map, site_names, modules, optional_modules):
     fulfilled_100 = 0
     fulfilled_gt0 = 0
     fulfilled_0 = 0
 
-    for site_url in DSF_SITE_IDS:
+    for site_name in site_names:
         site_yes_count = 0
         for column_name in modules:
-            if site_module_yes_no_map[column_name][site_url] == "Yes" and column_name not in optional_modules:
+            if site_module_yes_no_map[column_name][site_name] == "Yes" and column_name not in optional_modules:
                 site_yes_count += 1
 
         non_optional_modules = (len(modules) - len(optional_modules))
         site_fulfilled = 100 if non_optional_modules == 0 else int(100 * site_yes_count / non_optional_modules)
 
-        site_module_yes_no_map["percentage_fulfilled"][site_url] = str(site_fulfilled) + " %"
+        site_module_yes_no_map["percentage_fulfilled"][site_name] = str(site_fulfilled) + " %"
         if site_fulfilled == 100:
             fulfilled_100 += 1
         elif site_fulfilled > 0:
@@ -133,13 +135,14 @@ def append_percentage_fulfilled_column(site_module_yes_no_map, modules, optional
     site_module_yes_no_map["percentage_fulfilled"]["total_na"] = fulfilled_0
 
 
-def create_columns(query_reports, column_names, optional_modules, column_attribute):
+def create_columns(query_reports, site_names, column_names, optional_modules, column_attribute):
     site_module_yes_no_map = {column_name: {"total_yes": 0, "total_no": 0, "total_na": 0} for column_name in column_names}
 
     for query_report in query_reports:
         column_name = query_report[column_attribute]
 
-        for site_url, converted_query_result in query_report["result"].items():
+        for site_name in site_names:
+            converted_query_result = query_report["result"][site_name] if site_name in query_report["result"].keys() else "."
 
             if converted_query_result == "Yes":
                 site_module_yes_no_map[column_name]["total_yes"] += 1
@@ -148,11 +151,11 @@ def create_columns(query_reports, column_names, optional_modules, column_attribu
             else:
                 site_module_yes_no_map[column_name]["total_na"] += 1
 
-            site_module_yes_no_map[column_name][site_url] = converted_query_result
+            site_module_yes_no_map[column_name][site_name] = converted_query_result
 
     if column_attribute == "module":
         module_names = list(filter(lambda x: x != "percentage_fulfilled", column_names))
-        append_percentage_fulfilled_column(site_module_yes_no_map, module_names, optional_modules)
+        append_percentage_fulfilled_column(site_module_yes_no_map, site_names, module_names, optional_modules)
     return site_module_yes_no_map
 
 
@@ -174,19 +177,28 @@ def get_column_keys(report_results, column_attribute):
         return column_keys, []
 
 
+def get_all_site_names(report_results):
+    site_names = list(DSF_SITE_IDS)
+    for report in report_results:
+        site_names.extend(x for x in report["result"].keys() if x not in site_names)
+    site_names.sort()
+
+    return sorted(site_names, key=str.casefold)
+
+
 # column_attribute can be date or module
 def convert_to_table(report_results, column_attribute):
-    row_keys = ["total_yes", "total_no", "total_na"] + list(DSF_SITE_IDS)
+    site_names = get_all_site_names(report_results)
     column_keys, optional_column_keys = get_column_keys(report_results, column_attribute)
-    columns = create_columns(report_results, column_keys, optional_column_keys, column_attribute)
+    columns = create_columns(report_results, site_names, column_keys, optional_column_keys, column_attribute)
 
     pTable = PrettyTable()
-    first_column = ["Total Yes | 100% fullfilled", "Total No | >0% fullfilled", "Total Na | 0% fullfilled"] + list(DSF_SITE_IDS)
-    pTable.add_column("Site URL", first_column)
+    first_column = ["Total Yes | 100% fullfilled", "Total No | >0% fullfilled", "Total Na | 0% fullfilled"] + site_names
+    pTable.add_column("Site Identifier", first_column)
 
     for column_key in column_keys:
         column = []
-        for row_key in row_keys:
+        for row_key in ["total_yes", "total_no", "total_na"] + site_names:
             column.append(columns[column_key][row_key])
 
         column_name = column_key + " (optional)" if column_key in optional_column_keys else column_key
@@ -212,7 +224,7 @@ def load_history_report():
         if history_report["query"] != history_query:
             raise ValueError("history report contains query that is not equal to the current history query")
 
-        history_report["reports"].sort(key=lambda x: datetime.strptime(x["date"], "%Y-%m-%d"))
+        history_report["reports"].sort(key=lambda x: datetime.strptime(x["date"], "%Y-%m-%d"), reverse=True)
         return history_report
 
 
@@ -221,12 +233,12 @@ def update_and_save_history_report(history_report, new_result):
     new_history_result = {"date": now, "result": new_result}
 
     reports = history_report["reports"]
-    most_recent_date = reports[len(reports)-1]["date"] if len(reports) > 0 else None
+    most_recent_date = reports[0]["date"] if len(reports) > 0 else None
 
     if most_recent_date == now:
-        reports[len(reports)-1] = new_history_result
+        reports[0] = new_history_result
     else:
-        history_report["reports"].append(new_history_result)
+        history_report["reports"].insert(0, new_history_result)
 
     with open(HISTORY_REPORT_FILE, "w") as f:
         json.dump(history_report, f)
@@ -246,6 +258,8 @@ def send_table_to_conf(table, conf_user, conf_pw, conf_api_base_url, conf_page_i
     res = requests.get(f'{conf_api_base_url}/content/{conf_page_id}',
                        headers=header)
 
+    logging.debug(f'Response sending result to confluence: {res.text}')
+
     version_number = res.json()['version']['number']
     content_update = {
         'title': page_title,
@@ -262,11 +276,10 @@ def send_table_to_conf(table, conf_user, conf_pw, conf_api_base_url, conf_page_i
 
 def send_query_and_get_results(query, backend_base_url, backend_client_id, client_secret, keycloak_token_url, wait_result_secs_feas):
     access_token = connect_to_keycloak(backend_client_id, client_secret, keycloak_token_url)
-    print(f'Sending query: {query}')
+    logging.info(f'Sending query: {query}')
     query_id = send_test_query_and_get_id(access_token, query, backend_base_url)
-    print(f'Query ID: {query_id}')
-    print(f'Sleep for {wait_result_secs_feas} seconds to wait for results')
-    sys.stdout.flush()
+    logging.info(f'Query ID: {query_id}')
+    logging.debug(f'Sleep for {wait_result_secs_feas} seconds to wait for results')
     time.sleep(int(wait_result_secs_feas))
     access_token = connect_to_keycloak(backend_client_id, client_secret, keycloak_token_url)
     return get_results(query_id, access_token, backend_base_url)
@@ -283,7 +296,7 @@ def execute_history_query(backend_base_url, backend_client_id, client_secret, ke
     update_and_save_history_report(history_report, converted_result)
 
     history_table = convert_to_table(history_report["reports"][-int(history_table_len):], "date")
-    print(history_table)
+    logging.info(history_table)
 
     if send_results_confluence:
         send_table_to_conf(history_table, conf_user, conf_pw, confluence_api_base_url, confluence_page_id_hist, CONFIG["hist-page-title"], CONFIG["hist-page-content-html"])
@@ -299,7 +312,7 @@ def execute_feas_test_queries(backend_base_url, backend_client_id, client_secret
         query['result'] = convert_results(results)
 
     report_table = convert_to_table(queries["queries"], "module")
-    print(report_table)
+    logging.info(report_table)
 
     if send_results_confluence:
         send_table_to_conf(report_table, conf_user, conf_pw, confluence_api_base_url, confluence_page_id_feas, CONFIG["feas-page-title"], CONFIG["feas-page-content-html"])
