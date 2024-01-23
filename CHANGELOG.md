@@ -34,4 +34,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [0.1.0] - 2024-01-23
 
-Initial Logged Version
+### Added
+- Add `Changelog.md`
+- Add `Development.md`
+- Add `.env.default`
+- Add github workflow to automate the Docker image build process
+- Add history table to display results over time
+- Add shell script to execute the monitoring without docker for easier testing during development
+    
+### Changed
+- Update Readme to
+- Rename and move files for better file structure
+- Extend feasibility test to evaluate multilpe modules
+- Extend feasibility table to display additional summary fields
+- Make Confluence page content and DSF sites configurable
