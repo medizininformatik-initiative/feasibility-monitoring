@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 ### Security
 
+## [0.2.1] - 2024-02-16
+
+### Fixed
+- History test table does not show last 14 days ([#19](https://github.com/medizininformatik-initiative/feasibility-monitoring/issues/19))
+
 ## [0.2.0] - 2024-01-23
 
 ### Added
