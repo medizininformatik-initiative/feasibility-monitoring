@@ -86,7 +86,7 @@ def execute_ping_task(dsf_base_url, wait_result_secs_ping, b_send_results_conflu
 
     res = requests.post(f'{dsf_base_url}/Task', headers=header,
                         cert=(dsf_cert_path, dsf_key_path), data=ping_task)
-    
+
     logging.debug(f'Response from DSF sending Ping: {res.text}')
     ping_task_id = res.json()['id']
 

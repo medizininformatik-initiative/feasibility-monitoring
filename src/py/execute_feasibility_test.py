@@ -6,7 +6,6 @@ import base64
 import json
 import yaml
 import time
-import sys
 import os
 
 
@@ -295,7 +294,7 @@ def execute_history_query(backend_base_url, backend_client_id, client_secret, ke
 
     update_and_save_history_report(history_report, converted_result)
 
-    history_table = convert_to_table(history_report["reports"][-int(history_table_len):], "date")
+    history_table = convert_to_table(history_report["reports"][:int(history_table_len)], "date")
     logging.info(history_table)
 
     if send_results_confluence:
