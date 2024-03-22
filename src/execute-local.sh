@@ -20,11 +20,14 @@ CONFLUENCE_PAGE_ID_HIST=${CONFLUENCE_PAGE_ID_HIST:-""}
 HISTORY_TABLE_LEN=${HISTORY_TABLE_LEN:-14}
 EXECUTE_DSF_PING_TEST=${EXECUTE_DSF_PING_TEST:-"false"}
 CONFLUENCE_PAGE_ID_PING=$CONFLUENCE_PAGE_ID_PING
+EXECUTE_ACTIVITY_DEF_COLLECTION=${EXECUTE_ACTIVITY_DEF_COLLECTION:-"false"}
+LOG_LEVEL=${LOG_LEVEL:-"INFO"}
 
-python src/py/feasibility-monitoring.py --dsf_cert_path $DSF_CERT_PATH --dsf_key_path $DSF_KEY_PATH --backend_base_url "$BACKEND_BASE_URL" --backend_client_id "$BACKEND_CLIENT_ID" \
+python3 src/py/feasibility-monitoring.py --dsf_cert_path $DSF_CERT_PATH --dsf_key_path $DSF_KEY_PATH --backend_base_url "$BACKEND_BASE_URL" --backend_client_id "$BACKEND_CLIENT_ID" \
  --client_secret "$BACKEND_CLIENT_SECRET" --keycloak_token_url "$KEYCLOAK_TOKEN_URL" \
  --confluence_api_base_url "$CONFLUENCE_API_BASE_URL" --conf_user "$CONF_USER" --conf_pw "$CONF_PW"\
  --send_results_confluence $SEND_TO_CONFLUENCE  --wait_result_secs_feas "$WAIT_RESULT_SECS_FEAS"\
  --dsf_base_url $DSF_BASE_URL --execute_feas_test $EXECUTE_FEAS_TEST --confluence_page_id_feas $CONFLUENCE_PAGE_ID_FEAS\
  --execute_history_test $EXECUTE_HISTORY_TEST --confluence_page_id_hist $CONFLUENCE_PAGE_ID_HIST --history_table_len $HISTORY_TABLE_LEN\
- --execute_ping_test $EXECUTE_DSF_PING_TEST --confluence_page_id_ping $CONFLUENCE_PAGE_ID_PING  --wait_result_secs_ping "$WAIT_RESULT_SECS_PING"
+ --execute_ping_test $EXECUTE_DSF_PING_TEST --confluence_page_id_ping $CONFLUENCE_PAGE_ID_PING  --wait_result_secs_ping "$WAIT_RESULT_SECS_PING"\
+ --execute_collect_activity_definition $EXECUTE_ACTIVITY_DEF_COLLECTION --log_level $LOG_LEVEL

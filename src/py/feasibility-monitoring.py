@@ -1,6 +1,7 @@
 import argparse
 import execute_ping_test
 import execute_feasibility_test
+import execute_collect_activity_definitions
 import logging
 import sys
 
@@ -49,6 +50,7 @@ if __name__ == "__main__":
     parser.add_argument('--execute_feas_test', help='', type=str_to_bool, default="false")
     parser.add_argument('--execute_history_test', help='', type=str_to_bool, default="false")
     parser.add_argument('--execute_ping_test', help='', type=str_to_bool, default="false")
+    parser.add_argument('--execute_collect_activity_definition', help='', type=str_to_bool, default="false")
     parser.add_argument('--log_level', help='', default="INFO")
 
     args = vars(parser.parse_args())
@@ -73,6 +75,7 @@ if __name__ == "__main__":
     b_execute_feas_test = args["execute_feas_test"]
     b_execute_history_test = args["execute_history_test"]
     b_execute_ping_test = args["execute_ping_test"]
+    b_execute_activity_config_collection = args["execute_collect_activity_definition"]
     log_level = args["log_level"]
 
     logging.basicConfig(stream=sys.stdout, level=log_level)
@@ -116,3 +119,15 @@ if __name__ == "__main__":
                                             dsf_cert_path,
                                             dsf_key_path)
         logging.info("Finished executing ping test")
+
+    if b_execute_activity_config_collection:
+        logging.info("### Executing the collection of activity definitions (installed processes at sites)")
+        execute_collect_activity_definitions.execute_collect_activity_definitions(dsf_base_url,
+                                            wait_result_secs_ping,
+                                            b_send_results_confluence,
+                                            confluence_api_base_url,
+                                            confluence_page_id_ping,
+                                            conf_user, conf_pw,
+                                            dsf_cert_path,
+                                            dsf_key_path)
+        logging.info("### Finished executing the collection of activity definitions")

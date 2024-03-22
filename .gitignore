@@ -2,7 +2,9 @@
 feasibility-results.json
 dev-call.sh
 reports/*.json
+reports/*.csv
 certs/
 temp/
 __pycache__/
 config/config.yml
+venv
