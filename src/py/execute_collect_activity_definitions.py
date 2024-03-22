@@ -30,6 +30,10 @@ def get_next_link(link_elem):
 def page_through_results_and_collect(resp, dsf_cert_path, dsf_key_path):
 
     result_entry = []
+
+    if resp.status_code != 200:
+        return result_entry
+
     next_link = get_next_link(resp.json()["link"])
     if "entry" not in resp.json().keys():
         return result_entry
