@@ -2,6 +2,7 @@ import argparse
 import execute_ping_test
 import execute_feasibility_test
 import execute_collect_activity_definitions
+import execute_collect_report_overview
 import logging
 import sys
 
@@ -76,6 +77,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "--execute_collect_activity_definition", help="", type=str_to_bool, default="false"
     )
+    parser.add_argument(
+        "--execute_collect_report_overview", help="", type=str_to_bool, default="false"
+    )
     parser.add_argument("--log_level", help="", default="INFO")
 
     args = vars(parser.parse_args())
@@ -101,6 +105,7 @@ if __name__ == "__main__":
     b_execute_history_test = args["execute_history_test"]
     b_execute_ping_test = args["execute_ping_test"]
     b_execute_activity_config_collection = args["execute_collect_activity_definition"]
+    b_execute_collect_report_overview = args["execute_collect_report_overview"]
     log_level = args["log_level"]
 
     logging.basicConfig(stream=sys.stdout, level=log_level)
@@ -162,3 +167,12 @@ if __name__ == "__main__":
         )
 
         logging.info("### Finished executing the collection of activity definitions")
+
+    if b_execute_collect_report_overview:
+        logging.info("### Executing the collection of report overview")
+
+        execute_collect_report_overview.execute_collect_report_overview(
+            dsf_base_url, dsf_cert_path, dsf_key_path
+        )
+
+        logging.info("### Finished executing the collection of report overview")
