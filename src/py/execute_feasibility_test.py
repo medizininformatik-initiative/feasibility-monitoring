@@ -291,7 +291,6 @@ def execute_history_query(backend_base_url, backend_client_id, client_secret, ke
     history_query = load_json_file(HISTORY_QUERY_FILE)
     results = send_query_and_get_results(history_query, backend_base_url, backend_client_id, client_secret, keycloak_token_url, wait_result_secs_feas)
     converted_result = convert_results(results)
-
     update_and_save_history_report(history_report, converted_result)
 
     history_table = convert_to_table(history_report["reports"][:int(history_table_len)], "date")
