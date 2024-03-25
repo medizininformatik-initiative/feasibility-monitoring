@@ -294,7 +294,7 @@ def execute_history_query(backend_base_url, backend_client_id, client_secret, ke
     converted_result = convert_results(results)
     update_and_save_history_report(history_report, converted_result)
 
-    history_table = convert_to_table(history_report["reports"][0:int(history_table_len)], "date")
+    history_table = convert_to_table(history_report["reports"][:int(history_table_len)], "date")
     logging.info(history_table)
 
     if send_results_confluence:
