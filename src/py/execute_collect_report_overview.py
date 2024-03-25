@@ -61,9 +61,6 @@ def save_results_to_disk(table):
 def execute_collect_report_overview(dsf_base_url, dsf_cert_path, dsf_key_path):
 
     report_list = {}
-    print(dsf_base_url)
-    print(dsf_cert_path)
-    print(dsf_key_path)
     report_req_res = requests.get(
         f"{dsf_base_url}/Bundle?_format=json&_profile=http://medizininformatik-initiative.de/fhir/Bundle/search-bundle-response-report|1.0",
         cert=(dsf_cert_path, dsf_key_path),
