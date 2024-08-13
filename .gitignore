@@ -2,6 +2,8 @@
 feasibility-results.json
 dev-call.sh
 reports/*.json
+reports/*.csv
+venv
 certs/
 temp/
 __pycache__/

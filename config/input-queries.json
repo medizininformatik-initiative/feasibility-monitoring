@@ -199,6 +199,22 @@
                 "version": "1.0.0",
                 "display": "Verabreichung von Medikamenten"
               }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "L03AA02",
+                  "system": "http://fhir.de/CodeSystem/bfarm/atc",
+                  "version": "2022",
+                  "display": "Filgrastim"
+                }
+              ],
+              "context": {
+                "code": "Medikamentenverabreichung",
+                "system": "fdpg.mii.cds",
+                "version": "1.0.0",
+                "display": "Verabreichung von Medikamenten"
+              }
             }
           ]
         ]
@@ -263,7 +279,7 @@
                 {
                   "code": "119297000",
                   "system": "http://snomed.info/sct",
-                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                  "version": "http://snomed.info/sct/900000000000207008/version/20240501",
                   "display": "Blood specimen"
                 }
               ],
@@ -279,7 +295,7 @@
                 {
                   "code": "119361006",
                   "system": "http://snomed.info/sct",
-                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                  "version": "http://snomed.info/sct/900000000000207008/version/20240501",
                   "display": "Plasma specimen"
                 }
               ],
@@ -295,7 +311,7 @@
                 {
                   "code": "119376003",
                   "system": "http://snomed.info/sct",
-                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                  "version": "http://snomed.info/sct/900000000000207008/version/20240501",
                   "display": "Tissue specimen"
                 }
               ],
@@ -311,7 +327,7 @@
                 {
                   "code": "441652008",
                   "system": "http://snomed.info/sct",
-                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                  "version": "http://snomed.info/sct/900000000000207008/version/20240501",
                   "display": "Formalin-fixed paraffin-embedded tissue specimen"
                 }
               ],
@@ -327,7 +343,7 @@
                 {
                   "code": "441479001",
                   "system": "http://snomed.info/sct",
-                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                  "version": "http://snomed.info/sct/900000000000207008/version/20240501",
                   "display": "Fresh tissue specimen"
                 }
               ],
@@ -341,25 +357,9 @@
             {
               "termCodes": [
                 {
-                  "code": "420135007",
+                  "code": "258580003",
                   "system": "http://snomed.info/sct",
-                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
-                  "display": "Whole blood"
-                }
-              ],
-              "context": {
-                "code": "Specimen",
-                "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Bioprobe"
-              }
-            },
-            {
-              "termCodes": [
-                {
-                  "code": "404798000",
-                  "system": "http://snomed.info/sct",
-                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
+                  "version": "http://snomed.info/sct/900000000000207008/version/20240501",
                   "display": "Whole blood"
                 }
               ],
@@ -375,8 +375,8 @@
                 {
                   "code": "119342007",
                   "system": "http://snomed.info/sct",
-                  "version": "http://snomed.info/sct/900000000000207008/version/20220930",
-                  "display": "Whole blood"
+                  "version": "http://snomed.info/sct/900000000000207008/version/20240501",
+                  "display": "Saliva Specimen"
                 }
               ],
               "context": {
