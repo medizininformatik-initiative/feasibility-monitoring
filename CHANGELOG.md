@@ -13,6 +13,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 ### Security
 
+
+## [0.2.2] - 2024-09-17
+
+### Fixed
+
+### Added
+
+- Added new loinc code ([#28](https://github.com/medizininformatik-initiative/feasibility-monitoring/issues/28))
+- Added new ATC and changed specimen code ([#26](https://github.com/medizininformatik-initiative/feasibility-monitoring/issues/26))
+- Added ActivityDefinition query ([#25](https://github.com/medizininformatik-initiative/feasibility-monitoring/pull/25))
+- Added collection of kds report overview
+
 ## [0.2.1] - 2024-02-16
 
 ### Fixed
