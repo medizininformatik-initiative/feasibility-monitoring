@@ -16,6 +16,9 @@ process_name_to_plugin_map = {
     "PingAutostart": "dsf-process-ping-pong",
     "DownloadAllowList": "dsf-process-allowlist",
     "UpdateAllowList": "dsf-process-allowlist",
+    "DataSend": "mii-process-datasharing",
+    "DataReceive": "mii-process-datasharing",
+    "CoordinateDataSharing": "mii-process-datasharing"
 }
 
 
