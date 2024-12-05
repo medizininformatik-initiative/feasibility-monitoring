@@ -379,22 +379,6 @@
             {
               "termCodes": [
                 {
-                  "code": "119376003",
-                  "system": "http://snomed.info/sct",
-                  "version": "http://snomed.info/sct/900000000000207008/version/20240501",
-                  "display": "Tissue specimen"
-                }
-              ],
-              "context": {
-                "code": "Specimen",
-                "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Bioprobe"
-              }
-            },
-            {
-              "termCodes": [
-                {
                   "code": "441652008",
                   "system": "http://snomed.info/sct",
                   "version": "http://snomed.info/sct/900000000000207008/version/20240501",
