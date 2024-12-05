@@ -78,112 +78,167 @@
       "optional": false,
       "sq": {
         "version": "http://to_be_decided.com/draft-1/schema#",
-        "display": "",
+        "display": "Ausgewählte Merkmale",
         "inclusionCriteria": [
           [
             {
               "termCodes": [
                 {
                   "code": "718-7",
+                  "display": "Hemoglobin [Mass/volume] in Blood",
                   "system": "http://loinc.org",
-                  "display": "Hämoglobin"
+                  "version": "2.78"
                 }
               ],
               "context": {
                 "code": "Laboruntersuchung",
+                "display": "Laboruntersuchung",
                 "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Laboruntersuchung"
+                "version": "1.0.0"
               }
             },
             {
               "termCodes": [
                 {
                   "code": "59260-0",
+                  "display": "Hemoglobin [Moles/volume] in Blood",
                   "system": "http://loinc.org",
-                  "display": "Hemoglobin [Moles/volume] in Blood"
+                  "version": "2.78"
                 }
               ],
               "context": {
                 "code": "Laboruntersuchung",
+                "display": "Laboruntersuchung",
                 "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Laboruntersuchung"
+                "version": "1.0.0"
               }
             },
             {
               "termCodes": [
                 {
                   "code": "17856-6",
+                  "display": "Hemoglobin A1c/Hemoglobin.total in Blood by HPLC",
                   "system": "http://loinc.org",
-                  "display": "Hämoglobin A1c"
+                  "version": "2.78"
                 }
               ],
               "context": {
                 "code": "Laboruntersuchung",
+                "display": "Laboruntersuchung",
                 "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Laboruntersuchung"
+                "version": "1.0.0"
               }
             },
             {
               "termCodes": [
                 {
                   "code": "4548-4",
+                  "display": "Hemoglobin A1c/Hemoglobin.total in Blood",
                   "system": "http://loinc.org",
-                  "display": "Hämoglobin A1c"
+                  "version": "2.78"
                 }
               ],
               "context": {
                 "code": "Laboruntersuchung",
+                "display": "Laboruntersuchung",
                 "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Laboruntersuchung"
+                "version": "1.0.0"
               }
             },
             {
               "termCodes": [
                 {
                   "code": "4549-2",
+                  "display": "Hemoglobin A1c/Hemoglobin.total in Blood by Electrophoresis",
                   "system": "http://loinc.org",
-                  "display": "Hemoglobin A1c/Hemoglobin.total in Blood by Electrophoresis"
+                  "version": "2.78"
                 }
               ],
               "context": {
                 "code": "Laboruntersuchung",
+                "display": "Laboruntersuchung",
                 "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Laboruntersuchung"
+                "version": "1.0.0"
               }
             },
             {
               "termCodes": [
                 {
                   "code": "20509-6",
+                  "display": "Hemoglobin [Mass/volume] in Blood by calculation",
                   "system": "http://loinc.org",
-                  "display": "Hemoglobin [Mass/volume] in Blood by calculation"
+                  "version": "2.78"
                 }
               ],
               "context": {
                 "code": "Laboruntersuchung",
+                "display": "Laboruntersuchung",
                 "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Laboruntersuchung"
+                "version": "1.0.0"
               }
             },
             {
               "termCodes": [
                 {
                   "code": "30352-9",
+                  "display": "Hemoglobin [Mass/volume] in Capillary blood",
                   "system": "http://loinc.org",
-                  "display": "Totales Hämoglobin kapillär"
+                  "version": "2.78"
                 }
               ],
               "context": {
                 "code": "Laboruntersuchung",
+                "display": "Laboruntersuchung",
                 "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Laboruntersuchung"
+                "version": "1.0.0"
+              }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "94500-6",
+                  "display": "SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory system specimen by NAA with probe detection",
+                  "system": "http://loinc.org",
+                  "version": "2.78"
+                }
+              ],
+              "context": {
+                "code": "Laboruntersuchung",
+                "display": "Laboruntersuchung",
+                "system": "fdpg.mii.cds",
+                "version": "1.0.0"
+              }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "93846-4",
+                  "display": "Hemoglobin [Moles/volume] in Venous blood",
+                  "system": "http://loinc.org",
+                  "version": "2.78"
+                }
+              ],
+              "context": {
+                "code": "Laboruntersuchung",
+                "display": "Laboruntersuchung",
+                "system": "fdpg.mii.cds",
+                "version": "1.0.0"
+              }
+            },
+            {
+              "termCodes": [
+                {
+                  "code": "75928-2",
+                  "display": "Hemoglobin [Moles/volume] in Arterial blood",
+                  "system": "http://loinc.org",
+                  "version": "2.78"
+                }
+              ],
+              "context": {
+                "code": "Laboruntersuchung",
+                "display": "Laboruntersuchung",
+                "system": "fdpg.mii.cds",
+                "version": "1.0.0"
               }
             }
           ]
