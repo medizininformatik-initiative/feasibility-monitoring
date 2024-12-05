@@ -13,6 +13,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 ### Security
 
+## [0.2.5] - 2024-12-05
+
+### Changed
+
+- Remove 119376003 - tissue specimen - as too many children ([#43](https://github.com/medizininformatik-initiative/feasibility-monitoring/issues/43))
+
 ## [0.2.4] - 2024-12-05
 
 ### Added
