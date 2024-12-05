@@ -13,6 +13,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 ### Security
 
+## [0.2.3] - 2024-12-05
+
+### Fixed
+
+### Added
+
+- Added new loinc codes to lab query ([#37](https://github.com/medizininformatik-initiative/feasibility-monitoring/issues/37))
 
 ## [0.2.2] - 2024-09-17
 
