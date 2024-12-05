@@ -1,6 +1,6 @@
 services:
     feasibility-test-client:
-        image: ghcr.io/medizininformatik-initiative/feasibility-monitoring:0.2.3
+        image: ghcr.io/medizininformatik-initiative/feasibility-monitoring:0.2.4
         environment:
             - BACKEND_BASE_URL=${BACKEND_BASE_URL:-"https://localhost/api/v1"} 
             - BACKEND_CLIENT_ID=${BACKEND_CLIENT_ID:-""} 
