@@ -13,6 +13,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 ### Security
 
+## [0.2.6] - 2025-02-05
+
+### Added
+
+- Added MedicationStatement and MedicationRequest to Medication query ([#46](https://github.com/medizininformatik-initiative/feasibility-monitoring/issues/46))
+
+
 ## [0.2.5] - 2024-12-05
 
 ### Changed
