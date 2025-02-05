@@ -250,45 +250,109 @@
       "module": "Medication",
       "optional": true,
       "sq": {
-        "version": "http://to_be_decided.com/draft-1/schema#",
-        "display": "",
-        "inclusionCriteria": [
-          [
+    "version": "http://to_be_decided.com/draft-1/schema#",
+    "display": "Ausgewählte Merkmale",
+    "inclusionCriteria": [
+        [
             {
-              "termCodes": [
-                {
-                  "code": "A10",
-                  "system": "http://fhir.de/CodeSystem/bfarm/atc",
-                  "version": "2022",
-                  "display": "Antidiabetika"
+                "termCodes": [
+                    {
+                        "code": "L03AA02",
+                        "display": "Filgrastim",
+                        "system": "http://fhir.de/CodeSystem/bfarm/atc",
+                        "version": "2024"
+                    }
+                ],
+                "context": {
+                    "code": "Medikamentenanordnung",
+                    "display": "Anordnung von Medikamenten",
+                    "system": "fdpg.mii.cds",
+                    "version": "1.0.0"
                 }
-              ],
-              "context": {
-                "code": "Medikamentenverabreichung",
-                "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Verabreichung von Medikamenten"
-              }
             },
             {
-              "termCodes": [
-                {
-                  "code": "L03AA02",
-                  "system": "http://fhir.de/CodeSystem/bfarm/atc",
-                  "version": "2022",
-                  "display": "Filgrastim"
+                "termCodes": [
+                    {
+                        "code": "A10",
+                        "display": "Antidiabetika",
+                        "system": "http://fhir.de/CodeSystem/bfarm/atc",
+                        "version": "2024"
+                    }
+                ],
+                "context": {
+                    "code": "Medikamentenanordnung",
+                    "display": "Anordnung von Medikamenten",
+                    "system": "fdpg.mii.cds",
+                    "version": "1.0.0"
                 }
-              ],
-              "context": {
-                "code": "Medikamentenverabreichung",
-                "system": "fdpg.mii.cds",
-                "version": "1.0.0",
-                "display": "Verabreichung von Medikamenten"
-              }
+            },
+            {
+                "termCodes": [
+                    {
+                        "code": "A10",
+                        "display": "Antidiabetika",
+                        "system": "http://fhir.de/CodeSystem/bfarm/atc",
+                        "version": "2024"
+                    }
+                ],
+                "context": {
+                    "code": "Medikamentenverordnung",
+                    "display": "Verordnung von Medikamenten",
+                    "system": "fdpg.mii.cds",
+                    "version": "1.0.0"
+                }
+            },
+            {
+                "termCodes": [
+                    {
+                        "code": "L03AA02",
+                        "display": "Filgrastim",
+                        "system": "http://fhir.de/CodeSystem/bfarm/atc",
+                        "version": "2024"
+                    }
+                ],
+                "context": {
+                    "code": "Medikamentenverordnung",
+                    "display": "Verordnung von Medikamenten",
+                    "system": "fdpg.mii.cds",
+                    "version": "1.0.0"
+                }
+            },
+            {
+                "termCodes": [
+                    {
+                        "code": "A10",
+                        "display": "Antidiabetika",
+                        "system": "http://fhir.de/CodeSystem/bfarm/atc",
+                        "version": "2024"
+                    }
+                ],
+                "context": {
+                    "code": "Medikamentenverabreichung",
+                    "display": "Verabreichung von Medikamenten",
+                    "system": "fdpg.mii.cds",
+                    "version": "1.0.0"
+                }
+            },
+            {
+                "termCodes": [
+                    {
+                        "code": "L03AA02",
+                        "display": "Filgrastim",
+                        "system": "http://fhir.de/CodeSystem/bfarm/atc",
+                        "version": "2024"
+                    }
+                ],
+                "context": {
+                    "code": "Medikamentenverabreichung",
+                    "display": "Verabreichung von Medikamenten",
+                    "system": "fdpg.mii.cds",
+                    "version": "1.0.0"
+                }
             }
-          ]
         ]
-      }
+    ]
+}
     },
     {
       "query-name": "procedure-endocronological-function",
