@@ -4,11 +4,12 @@ import logging
 import base64
 import time
 import yaml
+import json
 
 
 CONFIG = None
 CONFIG_FILE = "config/config.yml"
-PING_TASK_FILE = "src/resources/ping-task.xml"
+PING_TASK_FILE = "src/resources/ping-task.json"
 
 
 def load_config():
@@ -19,7 +20,7 @@ def load_config():
 
 def load_ping_task():
     with open(PING_TASK_FILE, 'r') as f:
-        return f.read()
+        return json.load(f)
 
 
 def convert_report_to_simple_table_ping(input_report):
@@ -73,19 +74,24 @@ def send_result_to_confluence_ping(report_table, confluence_api_base_url, conflu
                        headers=header, json=content_update)
 
 
-def execute_ping_task(dsf_base_url, wait_result_secs_ping, b_send_results_confluence, confluence_api_base_url, confluence_page_id_ping, conf_user, conf_pw, dsf_cert_path, dsf_key_path):
+def execute_ping_task(dsf_ping_process_version, dsf_hrp_ident, dsf_base_url, wait_result_secs_ping, b_send_results_confluence, confluence_api_base_url, confluence_page_id_ping, conf_user, conf_pw, dsf_cert_path, dsf_key_path):
     load_config()
 
     header = {
-        'Content-Type': 'application/xml',
+        'Content-Type': 'application/json',
         'Accept': "application/json"
     }
-
     ping_task = load_ping_task()
+
+    ping_task["requester"]["identifier"]["value"] = dsf_hrp_ident
+    ping_task["restriction"]["recipient"][0]["identifier"]["value"] = dsf_hrp_ident
+    ping_task["meta"]["profile"][0] = f'{ping_task["meta"]["profile"][0]}{dsf_ping_process_version}'
+    ping_task["instantiatesCanonical"] = f'{ping_task["instantiatesCanonical"]}{dsf_ping_process_version}'
+    
     logging.info('Sending ping task to DSF')
 
     res = requests.post(f'{dsf_base_url}/Task', headers=header,
-                        cert=(dsf_cert_path, dsf_key_path), data=ping_task)
+                        cert=(dsf_cert_path, dsf_key_path), json=ping_task)
 
     logging.debug(f'Response from DSF sending Ping: {res.text}')
     ping_task_id = res.json()['id']
