@@ -24,6 +24,8 @@ services:
             - LOG_LEVEL=${LOG_LEVEL:-"INFO"}
             - EXECUTE_ACTIVITY_DEF_COLLECTION=${EXECUTE_ACTIVITY_DEF_COLLECTION:-"false"}
             - EXECUTE_COLLECT_REPORT_OVERVIEW=${EXECUTE_COLLECT_REPORT_OVERVIEW:-"false"}
+            - DSF_PING_PROCESS_VERSION=${DSF_PING_PROCESS_VERSION:-"1.0"}
+            - DSF_HRP_IDENT=${DSF_HRP_IDENT:-"forschen-fuer-gesundheit.de"}
         volumes:
             - ${LOCAL_DSF_CERT_PATH:-./cert/dsf-cert.cer}:/opt/reportclient/certs/dsf-cert.cer
             - ${LOCAL_DSF_KEY_PATH:-./cert/dsf-key.key}:/opt/reportclient/certs/dsf-key.key

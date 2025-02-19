@@ -1,0 +1,43 @@
+{
+    "resourceType": "Task",
+    "meta": {
+        "profile": [
+            "http://dsf.dev/fhir/StructureDefinition/task-start-ping|"
+        ]
+    },
+    "instantiatesCanonical": "http://dsf.dev/bpe/Process/ping|",
+    "status": "requested",
+    "intent": "order",
+    "authoredOn": "2023-09-05T09:57:14.609Z",
+    "requester": {
+        "type": "Organization",
+        "identifier": {
+            "system": "http://dsf.dev/sid/organization-identifier",
+            "value": "forschen-fuer-gesundheit.de"
+        }
+    },
+    "restriction": {
+        "recipient": [
+            {
+                "type": "Organization",
+                "identifier": {
+                    "system": "http://dsf.dev/sid/organization-identifier",
+                    "value": "forschen-fuer-gesundheit.de"
+                }
+            }
+        ]
+    },
+    "input": [
+        {
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://dsf.dev/fhir/CodeSystem/bpmn-message",
+                        "code": "message-name"
+                    }
+                ]
+            },
+            "valueString": "startPing"
+        }
+    ]
+}
