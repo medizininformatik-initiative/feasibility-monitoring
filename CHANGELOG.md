@@ -13,6 +13,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 ### Security
 
+## [0.2.7] - 2025-02-19
+
+### Added
+
+- Make ping task configurable ([#51](https://github.com/medizininformatik-initiative/feasibility-monitoring/issues/51))
+
+### Changed
+
+- Changed order or report queries - medication query last ([#49](https://github.com/medizininformatik-initiative/feasibility-monitoring/issues/49))
+
 ## [0.2.6] - 2025-02-05
 
 ### Added
