@@ -20,6 +20,12 @@ if __name__ == "__main__":
         default="https://localhost/api/v2",
     )
     parser.add_argument(
+            "--dsf_ping_process_version", help="the version of the ping process", nargs="?", default="1.0"
+        )
+    parser.add_argument(
+            "--dsf_hrp_ident", help="ident of the hrp", nargs="?", default="forschen-fuer-gesundheit.de"
+        )
+    parser.add_argument(
         "--backend_client_id", help="backend client id", nargs="?", default="feasibility-gui"
     )
     parser.add_argument(
@@ -83,6 +89,8 @@ if __name__ == "__main__":
     parser.add_argument("--log_level", help="", default="INFO")
 
     args = vars(parser.parse_args())
+    dsf_ping_process_version = args["dsf_ping_process_version"]
+    dsf_hrp_ident = args["dsf_hrp_ident"]
     backend_base_url = args["backend_base_url"]
     backend_client_id = args["backend_client_id"]
     dsf_base_url = args["dsf_base_url"]
@@ -147,6 +155,8 @@ if __name__ == "__main__":
     if b_execute_ping_test:
         logging.info("Executing ping test")
         execute_ping_test.execute_ping_task(
+            dsf_ping_process_version,
+            dsf_hrp_ident,
             dsf_base_url,
             wait_result_secs_ping,
             b_send_results_confluence,
