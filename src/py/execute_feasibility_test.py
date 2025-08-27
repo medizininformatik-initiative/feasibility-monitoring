@@ -36,7 +36,7 @@ def load_json_file(file_path):
 
 
 def get_results(query_id, access_token, backend_base_url):
-    run_query_path = "/query"
+    run_query_path = "/query/feasibility"
     header = {
         'Authorization': f'Bearer {access_token}',
         'Content-Type': 'application/json'
@@ -57,6 +57,7 @@ def connect_to_keycloak(backend_client_id, client_secret, keycloak_token_url):
     resp = requests.post(keycloak_token_url,
                          data=backend_user_login)
     logging.debug(f'Token Status code: {resp.status_code}')
+
     access_token = resp.json()['access_token']
     return access_token
 
@@ -67,11 +68,12 @@ def send_test_query_and_get_id(access_token, sq, backend_base_url):
         'Content-Type': 'application/json'
     }
 
-    run_query_path = "/query"
+    run_query_path = "/query/feasibility"
     logging.debug(f'Running query on backend: {backend_base_url}{run_query_path}')
     resp = requests.post(
         f'{backend_base_url}{run_query_path}', headers=header, json=sq)
 
+    logging.debug(f'Response from backend run query status code: {resp.status_code}')
     logging.debug(f'Response from backend run query: {resp.text}')
     result_location = resp.headers['Location']
     query_id = result_location.rsplit('/', 1)[-1]
