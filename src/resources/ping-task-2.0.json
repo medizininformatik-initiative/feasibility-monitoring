@@ -2,18 +2,18 @@
     "resourceType": "Task",
     "meta": {
         "profile": [
-            "http://dsf.dev/fhir/StructureDefinition/task-start-ping|"
+            "http://dsf.dev/fhir/StructureDefinition/task-start-ping|2.0"
         ]
     },
-    "instantiatesCanonical": "http://dsf.dev/bpe/Process/ping|",
+    "instantiatesCanonical": "http://dsf.dev/bpe/Process/ping|2.0",
     "status": "requested",
     "intent": "order",
-    "authoredOn": "2023-09-05T09:57:14.609Z",
+    "authoredOn": "",
     "requester": {
         "type": "Organization",
         "identifier": {
             "system": "http://dsf.dev/sid/organization-identifier",
-            "value": "forschen-fuer-gesundheit.de"
+            "value": ""
         }
     },
     "restriction": {
@@ -22,7 +22,7 @@
                 "type": "Organization",
                 "identifier": {
                     "system": "http://dsf.dev/sid/organization-identifier",
-                    "value": "forschen-fuer-gesundheit.de"
+                    "value": ""
                 }
             }
         ]
@@ -38,6 +38,35 @@
                 ]
             },
             "valueString": "startPing"
-        }
+        },
+         {
+    "type": {
+      "coding": [ {
+        "system": "http://dsf.dev/fhir/CodeSystem/ping",
+        "version": "2.0",
+        "code": "target-endpoints"
+      } ]
+    },
+    "valueString": ""
+  },
+       {
+    "type": {
+      "coding": [ {
+        "system": "http://dsf.dev/fhir/CodeSystem/ping",
+        "version": "2.0",
+        "code": "download-resource-size-bytes"
+      } ]
+    },
+    "valueDecimal": 10000000
+  }, {
+    "type": {
+      "coding": [ {
+        "system": "http://dsf.dev/fhir/CodeSystem/ping",
+        "version": "2.0",
+        "code": "pong-timeout-duration"
+      } ]
+    },
+    "valueString": "PT30S"
+  }
     ]
 }
