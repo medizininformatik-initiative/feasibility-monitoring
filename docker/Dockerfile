@@ -10,7 +10,8 @@ COPY src/py/execute_collect_report_overview.py /opt/reportclient/src/py/execute_
 COPY config/input-queries.json /opt/reportclient/config/input-queries.json
 COPY config/history-query.json /opt/reportclient/config/history-query.json
 COPY config/config.yml /opt/reportclient/config/config.yml
-COPY src/resources/ping-task.json /opt/reportclient/src/resources/ping-task.json
+COPY src/resources/ping-task-1.0.json /opt/reportclient/src/resources/ping-task-1.0.json
+COPY src/resources/ping-task-2.0.json /opt/reportclient/src/resources/ping-task-2.0.json
 COPY docker/requirements.txt /tmp/requirements.txt
 
 RUN pip3 install -r /tmp/requirements.txt

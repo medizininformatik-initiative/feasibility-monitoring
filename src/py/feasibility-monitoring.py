@@ -23,6 +23,17 @@ if __name__ == "__main__":
             "--dsf_ping_process_version", help="the version of the ping process", nargs="?", default="1.0"
         )
     parser.add_argument(
+        "--dsf_ping_download_resource_size", help="the size of the downloaded resource in bytes, only relevant if ping 2.0 is used",
+        nargs="?", default="10000000"
+    )
+    parser.add_argument(
+        "--dsf_ping_pong_timeout_duration", help="the timeout duration of the pong only, relevant if ping 2.0 is used", default="PT30S"
+    )
+    parser.add_argument(
+        "--dsf_ping_target_endpoint", help="the target endpoint of the pong, optional at maximum 1",
+        default=""
+    )
+    parser.add_argument(
             "--dsf_hrp_ident", help="ident of the hrp", nargs="?", default="forschen-fuer-gesundheit.de"
         )
     parser.add_argument(
@@ -90,6 +101,9 @@ if __name__ == "__main__":
 
     args = vars(parser.parse_args())
     dsf_ping_process_version = args["dsf_ping_process_version"]
+    dsf_ping_download_resource_size = args["dsf_ping_download_resource_size"]
+    dsf_ping_pong_timeout_duration = args["dsf_ping_pong_timeout_duration"]
+    dsf_ping_target_endpoint = args["dsf_ping_target_endpoint"]
     dsf_hrp_ident = args["dsf_hrp_ident"]
     backend_base_url = args["backend_base_url"]
     backend_client_id = args["backend_client_id"]
@@ -154,19 +168,10 @@ if __name__ == "__main__":
 
     if b_execute_ping_test:
         logging.info("Executing ping test")
-        execute_ping_test.execute_ping_task(
-            dsf_ping_process_version,
-            dsf_hrp_ident,
-            dsf_base_url,
-            wait_result_secs_ping,
-            b_send_results_confluence,
-            confluence_api_base_url,
-            confluence_page_id_ping,
-            conf_user,
-            conf_pw,
-            dsf_cert_path,
-            dsf_key_path,
-        )
+        execute_ping_test.execute_ping_task(dsf_ping_process_version, dsf_hrp_ident, dsf_base_url,
+                                            wait_result_secs_ping, b_send_results_confluence, confluence_api_base_url,
+                                            confluence_page_id_ping, conf_user, conf_pw, dsf_cert_path, dsf_key_path,
+                                            dsf_ping_download_resource_size, dsf_ping_pong_timeout_duration, dsf_ping_target_endpoint)
         logging.info("Finished executing ping test")
 
     if b_execute_activity_config_collection:
