@@ -39,34 +39,41 @@
             },
             "valueString": "startPing"
         },
-         {
-    "type": {
-      "coding": [ {
-        "system": "http://dsf.dev/fhir/CodeSystem/ping",
-        "version": "2.0",
-        "code": "target-endpoints"
-      } ]
-    },
-    "valueString": ""
-  },
-       {
-    "type": {
-      "coding": [ {
-        "system": "http://dsf.dev/fhir/CodeSystem/ping",
-        "version": "2.0",
-        "code": "download-resource-size-bytes"
-      } ]
-    },
-    "valueDecimal": 10000000
-  }, {
-    "type": {
-      "coding": [ {
-        "system": "http://dsf.dev/fhir/CodeSystem/ping",
-        "version": "2.0",
-        "code": "pong-timeout-duration"
-      } ]
-    },
-    "valueString": "PT30S"
-  }
+        {
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://dsf.dev/fhir/CodeSystem/ping",
+                        "version": "2.0",
+                        "code": "target-endpoints"
+                    }
+                ]
+            },
+            "valueString": ""
+        },
+        {
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://dsf.dev/fhir/CodeSystem/ping",
+                        "version": "2.0",
+                        "code": "download-resource-size-bytes"
+                    }
+                ]
+            },
+            "valueDecimal": 10000000
+        },
+        {
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://dsf.dev/fhir/CodeSystem/ping",
+                        "version": "2.0",
+                        "code": "pong-timeout-duration"
+                    }
+                ]
+            },
+            "valueString": "PT30S"
+        }
     ]
 }
