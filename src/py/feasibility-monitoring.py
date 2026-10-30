@@ -167,12 +167,15 @@ if __name__ == "__main__":
         logging.info("Finished executing feasibility test")
 
     if b_execute_ping_test:
-        logging.info("Executing ping test")
-        execute_ping_test.execute_ping_task(dsf_ping_process_version, dsf_hrp_ident, dsf_base_url,
+        if  dsf_ping_process_version != '1.0' and dsf_ping_process_version != '2.0':
+            logging.error(f"Ping test does not support ping-task version {dsf_ping_process_version}. Only version 1.0 or 2.0 are supported.")
+        else:
+            logging.info("Executing ping test")
+            execute_ping_test.execute_ping_task(dsf_ping_process_version, dsf_hrp_ident, dsf_base_url,
                                             wait_result_secs_ping, b_send_results_confluence, confluence_api_base_url,
                                             confluence_page_id_ping, conf_user, conf_pw, dsf_cert_path, dsf_key_path,
                                             dsf_ping_download_resource_size, dsf_ping_pong_timeout_duration, dsf_ping_target_endpoint)
-        logging.info("Finished executing ping test")
+            logging.info("Finished executing ping test")
 
     if b_execute_activity_config_collection:
         logging.info("### Executing the collection of activity definitions (installed processes at sites)")
