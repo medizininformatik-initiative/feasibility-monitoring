@@ -10,16 +10,9 @@ import json
 
 
 CONFIG = None
-DSF_SITE_IDS = None
 CONFIG_FILE = "config/config.yml"
 PING_TASK_BASE_PATH = "src/resources/ping-task-"
 ENDPOINT_STRING = "Endpoint?status=active&identifier=http://dsf.dev/sid/endpoint-identifier|"
-
-def load_constants():
-    load_config()
-
-    global DSF_SITE_IDS
-    DSF_SITE_IDS = json.loads(CONFIG["dsf-site-ids"])
 
 def load_config():
     global CONFIG
@@ -45,8 +38,6 @@ def convert_report_to_simple_table_ping(input_report):
     pTable = PrettyTable(table['header'])
     pTable.add_row(["Total pong-received", list(input_report.values()).count("pong-received")], divider=True)
     pTable.add_row(["Total pong-missing", list(input_report.values()).count("pong-missing")], divider=True)
-    pTable.add_row(["Total not-reachable", list(input_report.values()).count("not-reachable")], divider=True)
-
     pTable.add_row(["Total not-reachable or missing from result", list(input_report.values()).count("not-reachable") + list(input_report.values()).count("missing")], divider=True)
     pTable.add_row(["Total not-allowed",list(input_report.values()).count("not-allowed")], divider=True)
     for site_ident in input_report.keys():
@@ -95,8 +86,12 @@ def execute_ping_task(dsf_ping_process_version, dsf_hrp_ident, dsf_base_url, wai
                       dsf_cert_path, dsf_key_path, dsf_ping_download_resource_size, dsf_ping_pong_timeout_duration,
                       dsf_endpoint_id):
     load_config()
-    load_constants()
 
+    dsf_site_ids = json.loads(CONFIG["dsf-site-ids"])
+
+    if not dsf_site_ids:
+        logging.info("No DSF Sites provided as input, no ping will be executed.")
+        return
 
     header = {
         'Content-Type': 'application/json',
