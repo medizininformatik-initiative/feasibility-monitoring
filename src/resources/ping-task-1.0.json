@@ -2,13 +2,13 @@
     "resourceType": "Task",
     "meta": {
         "profile": [
-            "http://dsf.dev/fhir/StructureDefinition/task-start-ping|"
+            "http://dsf.dev/fhir/StructureDefinition/task-start-ping|1.0"
         ]
     },
-    "instantiatesCanonical": "http://dsf.dev/bpe/Process/ping|",
+    "instantiatesCanonical": "http://dsf.dev/bpe/Process/ping|1.0",
     "status": "requested",
     "intent": "order",
-    "authoredOn": "2023-09-05T09:57:14.609Z",
+    "authoredOn": "",
     "requester": {
         "type": "Organization",
         "identifier": {
@@ -38,6 +38,18 @@
                 ]
             },
             "valueString": "startPing"
+        },
+        {
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://dsf.dev/fhir/CodeSystem/ping",
+                        "code": "target-endpoints",
+                        "version": "1.0"
+                    }
+                ]
+            },
+            "valueString": ""
         }
     ]
 }
