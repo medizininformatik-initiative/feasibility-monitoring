@@ -29,8 +29,12 @@ def load_config():
 
 def load_ping_task(task_version):
     file = f'{PING_TASK_BASE_PATH}{task_version}.json'
-    with open(file, 'r') as f:
-        return json.load(f)
+    try :
+        with open(file, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        logging.error(f"Template for Ping Task version {task_version} not found. Please contact your administrator.")
+        return None
 
 
 def convert_report_to_simple_table_ping(input_report):
@@ -39,16 +43,17 @@ def convert_report_to_simple_table_ping(input_report):
     }
 
     pTable = PrettyTable(table['header'])
-    pTable.add_row(["Total pong-recieved", list(input_report.values()).count("pong-received")], divider=True)
+    pTable.add_row(["Total pong-received", list(input_report.values()).count("pong-received")], divider=True)
     pTable.add_row(["Total pong-missing", list(input_report.values()).count("pong-missing")], divider=True)
     pTable.add_row(["Total not-reachable", list(input_report.values()).count("not-reachable")], divider=True)
 
+    pTable.add_row(["Total not-reachable or missing from result", list(input_report.values()).count("not-reachable") + list(input_report.values()).count("missing")], divider=True)
+    pTable.add_row(["Total not-allowed",list(input_report.values()).count("not-allowed")], divider=True)
     for site_ident in input_report.keys():
-        if site_ident in DSF_SITE_IDS:
-            ping_result = input_report[site_ident]
-            table[site_ident] = [site_ident]
-            table[site_ident].append(ping_result)
-            pTable.add_row(table[site_ident])
+        ping_result = input_report[site_ident]
+        table[site_ident] = [site_ident]
+        table[site_ident].append(ping_result)
+        pTable.add_row(table[site_ident])
 
     return pTable
 
@@ -98,6 +103,8 @@ def execute_ping_task(dsf_ping_process_version, dsf_hrp_ident, dsf_base_url, wai
         'Accept': "application/json"
     }
     ping_task = load_ping_task(dsf_ping_process_version)
+    if not ping_task:
+        return
 
     endpoint  = f'{ENDPOINT_STRING}{dsf_endpoint_id}'
 
@@ -106,11 +113,12 @@ def execute_ping_task(dsf_ping_process_version, dsf_hrp_ident, dsf_base_url, wai
     ping_task["restriction"]["recipient"][0]["identifier"]["value"] = dsf_hrp_ident
     ping_task["input"][1]["valueString"] = endpoint
 
-    if(dsf_ping_process_version.startswith('2')):
-        ping_task["input"][2]["valueString"] = dsf_ping_download_resource_size
+    if dsf_ping_process_version.startswith('2'):
+        ping_task["input"][2]["valueDecimal"] = int(dsf_ping_download_resource_size)
         ping_task["input"][3]["valueString"] = dsf_ping_pong_timeout_duration
 
     if dsf_endpoint_id == "" or dsf_endpoint_id is None:
+        dsf_endpoint_id = None
         ping_task["input"].pop(1)
     
     logging.info('Sending ping task to DSF')
@@ -130,12 +138,18 @@ def execute_ping_task(dsf_ping_process_version, dsf_hrp_ident, dsf_base_url, wai
     logging.debug(f'Response from DSF Ping Result: {res.text}')
     ping_task_result = res.json()
     ping_results = {}
-
+    site_name_index = 1 if dsf_ping_process_version == '1.0' else 0
     for result in ping_task_result['output']:
-        site_ident = result['extension'][0]['extension'][1]['valueIdentifier']['value']
+        site_ident = result['extension'][0]['extension'][site_name_index]['valueIdentifier']['value']
+        if site_ident not in dsf_site_ids:
+            logging.info(f'No result requested for {site_ident}, hiding it from results.')
+            continue
         ping_result = result['valueCoding']['code']
         ping_results[site_ident] = ping_result
-
+    if not dsf_endpoint_id:
+        for site_id in dsf_site_ids:
+            if site_id not in ping_results.keys():
+                ping_results[site_id] = "missing"
     ping_results = dict(sorted(ping_results.items()))
     report_table = convert_report_to_simple_table_ping(ping_results)
     logging.info(report_table)
